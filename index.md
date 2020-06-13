@@ -15,8 +15,8 @@ See more at the [example site](page1.md)
 
 
 [UNSW](https://medicalsciences.med.unsw.edu.au/research/groups/translational-neuroscience-facility)  
-and  
-![Conformal map](pic2.png)
+and ...  
+<![Conformal map](pic2.png)>
 
 You can use the [editor on GitHub](https://github.com/Frederic-vW/Frederic-vW.github.io/edit/master/index.md) to maintain and preview the content for your website in Markdown files.
 
