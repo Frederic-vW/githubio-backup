@@ -13,6 +13,11 @@ and the mp4 version:
 
 See more at the [example site](page1.md)
 
+
+[UNSW](https://medicalsciences.med.unsw.edu.au/research/groups/translational-neuroscience-facility)  
+and  
+![Conformal map](pic2.png)
+
 You can use the [editor on GitHub](https://github.com/Frederic-vW/Frederic-vW.github.io/edit/master/index.md) to maintain and preview the content for your website in Markdown files.
 
 Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
@@ -36,7 +41,7 @@ Syntax highlighted code block
 
 **Bold** and _Italic_ and `Code` text
 
-[Link](https://medicalsciences.med.unsw.edu.au/research/groups/translational-neuroscience-facility)  
+[UNSW](https://medicalsciences.med.unsw.edu.au/research/groups/translational-neuroscience-facility)  
 and  
 ![Conformal map](pic2.png)
 ```
