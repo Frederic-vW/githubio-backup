@@ -7,6 +7,10 @@
 Here's an example:  
 ![](eeg_128_loop.gif)
 
+and the mp4 version:
+
+<video src="test.mp4" width="320" height="320" controls preload></video>
+
 See more at the [example site](page1.md)
 
 You can use the [editor on GitHub](https://github.com/Frederic-vW/Frederic-vW.github.io/edit/master/index.md) to maintain and preview the content for your website in Markdown files.
@@ -32,7 +36,9 @@ Syntax highlighted code block
 
 **Bold** and _Italic_ and `Code` text
 
-[Link](url) and ![Image](src)
+[Link](https://medicalsciences.med.unsw.edu.au/research/groups/translational-neuroscience-facility)  
+and  
+![Conformal map](pic2.png)
 ```
 
 For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
