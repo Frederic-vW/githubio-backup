@@ -4,6 +4,8 @@
 
 ### Clustering methods
 
+Here's an example:  
+![](eeg_128_loop.gif)
 
 You can use the [editor on GitHub](https://github.com/Frederic-vW/Frederic-vW.github.io/edit/master/index.md) to maintain and preview the content for your website in Markdown files.
 
