@@ -7,6 +7,8 @@
 Here's an example:  
 ![](eeg_128_loop.gif)
 
+See more at the [example site](page1.md)
+
 You can use the [editor on GitHub](https://github.com/Frederic-vW/Frederic-vW.github.io/edit/master/index.md) to maintain and preview the content for your website in Markdown files.
 
 Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
