@@ -1,6 +1,8 @@
-# Github page init.
-## Github page init..
-### Github page init...
+# Spatiotemporal patterns in resting-state EEG
+
+## EEG microstate analysis
+
+### Clustering methods
 
 
 You can use the [editor on GitHub](https://github.com/Frederic-vW/Frederic-vW.github.io/edit/master/index.md) to maintain and preview the content for your website in Markdown files.
