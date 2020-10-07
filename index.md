@@ -9,9 +9,10 @@ Here's an example:
 
 and the mp4 version:
 
+<!--
 <video src="test.mp4" width="320" height="320" controls preload></video>
-
 See more at the [example site](page1.md)
+-->
 
 $$
 \begin{align*}
