@@ -16,6 +16,14 @@ See more at the [example site](page1.md)
 
 $$
 \begin{align*}
+  I(\tau) & = H(X_{t+\tau}) - H(X_{t+\tau} \vert X_{t})
+\end{align*}
+$$
+
+<!--
+https://lyk6756.github.io/2016/11/25/write_latex_equations.html
+$$
+\begin{align*}
   & \phi(x,y) = \phi \left(\sum_{i=1}^n x_ie_i, \sum_{j=1}^n y_je_j \right)
   = \sum_{i=1}^n \sum_{j=1}^n x_i y_j \phi(e_i, e_j) = \\
   & (x_1, \ldots, x_n) \left( \begin{array}{ccc}
@@ -30,6 +38,8 @@ $$
     \end{array} \right)
 \end{align*}
 $$
+-->
+
 
 <!---
 [UNSW](https://medicalsciences.med.unsw.edu.au/research/groups/translational-neuroscience-facility)  
