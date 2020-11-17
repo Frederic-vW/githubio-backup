@@ -54,7 +54,8 @@ You can use the [editor on GitHub](https://github.com/Frederic-vW/Frederic-vW.gi
 
 Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
 
-Try the code for yourself: [test](https://github.com/Frederic-vW/Frederic-vW.github.io/blob/master/analyze.html)
+Try the code for yourself: [test](https://github.com/Frederic-vW/Frederic-vW.github.io/analyze.html)
+or <a href="https://github.com/Frederic-vW/Frederic-vW.github.io/analyze.html" title="Test link">Test links</a>
 
 ```markdown
 ### Statistical characteristics of microstate sequences
