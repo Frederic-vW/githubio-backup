@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang = "en-US">
+ <head>
+ <meta charset = "UTF-8">
+ <title>Text input</title>
+ <!-- Latest compiled and minified plotly.js JavaScript -->
+ <script src="https://cdn.plot.ly/plotly-latest.min.js" charset="utf-8"></script>
+
+
+ <!--
+ <script type = "text/javascript">
+  function parse_input(){
+  var txtName = document.getElementById("txtName");
+  var txtOutput = document.getElementById("txtOutput");
+  var name = txtName.value;
+  txtOutput.value = "Hi there, " + name + "!"
+  }
+ </script>
+ -->
+
+ <!--
+ <script>alert("gotcha!")</script>
+ -->
+ </head>
+
+ <body>
+ <h2>Text Box IO</h2>
+ <h3>Statistical sequence analysis:</h3>
+ <p>
+ Your data:
+ <input type="text" placeholder="Copy your sequence here..." id="input1">
+ <button type="button" id="analyze_btn" onclick="analyze();">Analyze</button>
+ </p>
+ <div id="plot"></div>
+ <!--
+ <p>Your state symbols: <input type="text" id="output1"></p>
+ -->
+ <div id="output2"><strong>Mapped state symbols: </strong></div>
+ <div id="output3"><strong>Mapped sequence: </strong></div>
+ <div id="output4"><strong>Distribution: </strong></div>
+ <div id="div1"><strong>Transition matrix: </strong></div>
+ <div id="output5"><strong>Shannon entropy: </strong></div>
+
+ <script>
+  function analyze(){
+    // set input
+    //var test1 = "1.23,3;2, A bc 1,D1,2;4; 5,2,5"
+    //var test2 = "144555215525344333"
+    //document.getElementById("input1").value = test2;
+    // get input
+    //var data_in = document.getElementById("input1").value;
+    // get sequence and symbol set
+    var [x, S] = symbolicSequence( document.getElementById("input1").value )
+    var ns = S.length
+
+    // symbol distribution
+    var p_hat = getP(x,ns)
+    // transition matrix
+    var T_hat = getT(x,ns)
+    drawTable(T_hat);
+
+    // entropies
+    var h0 = H1(p_hat);
+
+    // write output:
+    //document.getElementById("output1").value = states0;
+    //document.getElementById("output2").value = S
+    //document.getElementById("output3").value = x
+    //document.getElementById("output4").value = p_hat.map(a => a.toFixed(2))
+    //document.getElementById("output5").value = h0.toFixed(3)
+
+    //div.innerHTML += 'Extra stuff';
+    document.getElementById("output2").innerHTML += S
+    document.getElementById("output3").innerHTML += x.slice(0,10)+"..."
+    document.getElementById("output4").innerHTML += p_hat.map(a => a.toFixed(2))
+    document.getElementById("output5").innerHTML += h0.toFixed(3)
+
+    plotData(x)
+
+    // log stuff
+    t = ''
+    for (var i=0; i<ns; i++){
+        for (var j=0; j<ns; j++){
+            t += (T_hat[i][j].toFixed(2).toString() + ', ')
+        }
+    }
+    console.log(t)
+
+    //console.log("data_san:" + typeof x);
+    //console.log("states:" + typeof S);
+    //console.log("S:" + typeof states1);
+    //console.log("ns: " + ns);
+  }
+
+  function symbolicSequence(s){
+    // sanitize input string x
+    //var y = s.replace(/[^\d.-]/g, '').trim(); # includes floats
+    var x = s.replace(/[^\d-]/g, '').trim(); // integers only
+    var states0 = [...new Set(x)] // unique values of x
+    var states1 = states0.map(a => states0.indexOf(a)) // map to 0,1,...
+    var y = Array.prototype.map.call(x, a => states0.indexOf(a))
+    return [y, states1]
+  }
+
+  function getP(y,n){
+    //n = [...new Set(y)].length // number of symbols n
+    var p = Array(n).fill(0);
+    for (var i=0; i<y.length; i++) {p[y[i]]++}
+    for (var j=0; j<p.length; j++) {p[j] /= y.length}
+    return p;
+  }
+
+  function getT(y,n){
+    //var p = Array(n).fill(0);
+    var T = []
+    for (var i=0; i<n; i++) {T.push(Array(n).fill(0))}
+    for (var t=0; t<y.length-1; t++) { T[y[t]][y[t+1]]++ }
+    var rsum = Array(n).fill(0); // row sum
+    for (var i=0; i<n; i++) {
+        for (var j=0; j<n; j++) {
+            rsum[i] += T[i][j]
+        }
+    }
+    for (var i=0; i<n; i++) {
+        if (rsum[i] > 0) {
+            for (var j=0; j<n; j++) {
+                T[i][j] /= rsum[i];
+            }
+        }
+    }
+    return T;
+  }
+
+  function H1(p){
+    var h = 0.0;
+    for (var i=0; i<p.length; i++) {
+      if (p [i] > 0) {
+        h -= (p[i]*Math.log(p[i]))
+      }
+    }
+   return h;
+  }
+
+  function drawTable(T) {
+    //document.getElementById('div1').innerHTML = "";
+    nr = T.length;
+    nc = T[0].length;
+    var div1 = document.getElementById('div1');
+    var tbl = document.createElement("table");
+    for (var r=0; r<nr; r++) {
+      var row = document.createElement("tr");
+      for (var c=0; c<nc; c++) {
+        var cell = document.createElement("td");
+        var cellText = document.createTextNode(T[r][c].toFixed(2));
+        cell.appendChild(cellText);
+        row.appendChild(cell);
+      }
+	  tbl.appendChild(row);
+    }
+    div1.appendChild(tbl);
+  }
+
+  function plotData(z){
+    var trace1 = {
+      x: [1, 2, 3, 4],
+      y: [10, 15, 13, 17],
+      type: 'scatter'
+    };
+    var trace2 = {
+      x: [1, 2, 3, 4],
+      y: [16, 5, 11, 9],
+      type: 'scatter'
+    };
+    var data = [trace1, trace2];
+    //console.log(z.length + z)
+    //var data = {
+    //  x: [...Array(z.length).keys()],
+    //  y: z,
+    //};
+    Plotly.newPlot('plot', data);
+  }
+
+  </script>
+
+ </body>
+</html>
