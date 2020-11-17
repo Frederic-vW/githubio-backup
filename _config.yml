@@ -1,6 +1,11 @@
+# Remote Setting
+baseurl: "/guidelines"
+# url: ""
+# Theme
+# theme: "just-the-docs"
+remote_theme: pmarsceill/just-the-docs
 #theme: jekyll-theme-architect
 #theme: jekyll-theme-cayman
-remote_theme: pmarsceill/just-the-docs
 #theme: jekyll-theme-dinky
 #theme: jekyll-theme-hacker
 #theme: jekyll-theme-leap-day
