@@ -62,6 +62,10 @@ Relative links:
 Try the code for yourself: [test](analyze.html)
 or <a href="analyze.html" title="Test link">Test link</a>
 
+in new window:
+[test](analyze.html){:target="_blank" rel="noopener"}
+
+
 ```markdown
 ### Statistical characteristics of microstate sequences
 
