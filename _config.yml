@@ -4,8 +4,12 @@
 # Theme
 # theme: "just-the-docs"
 #remote_theme: pmarsceill/just-the-docs
+title: "Remote theme example"
+remote_theme: pmarsceill/just-the-docs
+color_scheme: "dark"
+search_enabled: false
 #theme: jekyll-theme-architect
-theme: jekyll-theme-cayman
+#theme: jekyll-theme-cayman
 #theme: jekyll-theme-dinky
 #theme: jekyll-theme-hacker
 #theme: jekyll-theme-leap-day
