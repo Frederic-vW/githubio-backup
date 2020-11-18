@@ -1,5 +1,8 @@
 # Spatiotemporal patterns in resting-state EEG
 
+Table of contents (test):
+{:toc}
+
 ## EEG microstate analysis
 
 ### Clustering methods
