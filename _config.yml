@@ -14,3 +14,8 @@ title: GDS projects
 description: from nothing...
 logo: cmap2.png
 markdown: kramdown
+kramdown:
+   html_to_native: true
+   hard_wrap: false
+   syntax_highlighter: rouge
+   toc_levels: 2..2
