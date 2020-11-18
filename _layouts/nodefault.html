@@ -51,6 +51,13 @@
     </header>
 
     <main id="content" class="main-content" role="main">
+      {% unless page.notoc %}
+      <div id="inline_toc" markdown="1">
+      * TOC
+      {:toc}
+      </div>
+      {% endunless %}
+      
       {{ content }}
 
       <footer class="site-footer">
