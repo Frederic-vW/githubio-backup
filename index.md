@@ -1,4 +1,4 @@
-# Spatiotemporal patterns in resting-state EEG
+# Resting-state EEG
 
 ## EEG microstate analysis
 
