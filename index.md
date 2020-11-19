@@ -1,4 +1,4 @@
-# Resting-state EEG
+# Resting-state EEG (and more...)
 
 ## EEG microstate analysis
 
@@ -56,6 +56,13 @@ Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://j
 
 Absolute links:
 Try the code for yourself (opens in new window): [online analysis](analyze.html){:target="_blank" rel="noopener"}
+
+| head1        | head two          | three |
+|:-------------|:------------------|:------|
+| ok           | good swedish fish | nice  |
+| out of stock | good and plenty   | nice  |
+| ok           | good `oreos`      | hmm   |
+| ok           | good `zoute` drop | yumm  |
 
 
 ```markdown
