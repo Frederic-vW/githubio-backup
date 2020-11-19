@@ -6,7 +6,7 @@ Multi-channel EEG activity is usually analyzed by looking at the set of single c
 
 Multivariate time series are difficult to visualize. In motion, surface electrical activity looks more like this:
 
-<video src="S029R02_avgref_t1000-2000_graph.mp4" width="320" height="320" controls preload></video>
+<video src="S029R02_avgref_t1000-2000_graph.mp4" width="380" height="380" controls preload></video>
 
 <!--
 See more at the [example site](page1.md)
