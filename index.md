@@ -14,6 +14,13 @@ Here's an example:
   alert("test!");
 </script>
 
+<p>
+<div id="copypaste" style="display: none;">
+Paste your data into the box: 
+<input type="text" id="paste-input" placeholder=">>> data here <<<">
+</div>
+</p>
+
 ![eeg_sample](eeg_sample2.png)
 
 and the mp4 version:
