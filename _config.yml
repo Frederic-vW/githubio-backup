@@ -14,4 +14,4 @@ title: GDS projects
 description: experiments and models
 logo: patterns2.png
 markdown: kramdown
-theme: "just-the-docs"
+remote-theme: "just-the-docs"
