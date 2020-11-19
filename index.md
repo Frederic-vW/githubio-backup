@@ -20,6 +20,8 @@ Here's an example:
 <input type="text" id="paste-input" placeholder=">>> data here <<<">
 </div></p>
 
+<div><button type="button" id="btn-parse" onclick="parseInput();"> Parse input </button></div>
+
 <p><div id="output-sequence-in"><strong>Parsed sequence: </strong></div></p>
 
 <p><div id="output-symbols-parsed"><strong>Parsed symbols: </strong></div></p>
