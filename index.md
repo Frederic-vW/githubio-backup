@@ -1,4 +1,17 @@
-# Resting-state EEG (and more...)
+# Resting-state EEG
+
+Multi-channel EEG activity is usually analyzed by looking at the set of single channel time series:
+
+![eeg_sample](eeg_sample2.png)
+
+Multivariate time series are difficult to visualize. In motion, surface electrical activity looks more like this:
+
+<video src="S029R02_avgref_t1000-2000_graph.mp4" width="320" height="320" controls preload></video>
+
+<!--
+See more at the [example site](page1.md)
+-->
+
 
 ## EEG microstate analysis
 
@@ -27,17 +40,10 @@ Here's an example:
 <p><div id="output-sequence-mapped"><strong>Mapped sequence: </strong></div></p>
 -->
 
-
-![eeg_sample](eeg_sample2.png)
-
 <!--
 and the mp4 version:
 -->
 
-<!--
-<video src="test.mp4" width="320" height="320" controls preload></video>
-See more at the [example site](page1.md)
--->
 
 $$
 \begin{align*}
