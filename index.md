@@ -8,12 +8,19 @@ Multivariate time series are difficult to visualize. In motion, surface electric
 
 <video src="S029R02_avgref_t1000-2000_graph.mp4" width="380" height="380" controls preload></video>
 
+The animation is slowed down 6.4 times compared to real-life oscillations. In other words, the 40 second animation represents 6.25 seconds real EEG time.
+The oscillatory activity over the occipital part of the brain has a main frequency of 9 Hz, i.e. within the alpha frequency band (8-12 Hz). 
+
 <!--
 See more at the [example site](page1.md)
 -->
 
 
 ## EEG microstate analysis
+
+The 1-40 Hz oscillation is shown on the left, and the corresponding microstate on the right.
+
+<video src="S029R02_avgref_t1000-2000_microstates.mp4" width="760" height="380" controls preload></video>
 
 ### Clustering methods
 
