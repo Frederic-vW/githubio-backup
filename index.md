@@ -5,7 +5,11 @@
 ### Clustering methods
 
 Here's an example:  
+<!--
 ![](eeg_128_loop.gif)
+-->
+
+![eeg_sample](eeg_sample2.png)
 
 and the mp4 version:
 
