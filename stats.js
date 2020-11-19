@@ -1,4 +1,3 @@
-<script>
 var x; // Array, microstate sequence
 var S0; // parsed set of states
 var S1; // mapped set of states
@@ -31,4 +30,3 @@ function parseInput(){
 
     //plotData(x)
 }
-</script>
