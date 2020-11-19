@@ -16,12 +16,18 @@ Here's an example:
 </script>
 -->
 
-<p>
-<div id="copypaste" style="display: block;">
-Paste your data into the box: 
+<p><div id="copypaste" style="display: block;"> Paste your data into the box: 
 <input type="text" id="paste-input" placeholder=">>> data here <<<">
-</div>
-</p>
+</div></p>
+
+<p><div id="output-sequence-in"><strong>Parsed sequence: </strong></div></p>
+
+<p><div id="output-symbols-parsed"><strong>Parsed symbols: </strong></div></p>
+
+<p><div id="output-symbols-mapped"><strong>Mapped symbols: </strong></div></p>
+
+<p><div id="output-sequence-mapped"><strong>Mapped sequence: </strong></div></p>
+
 
 ![eeg_sample](eeg_sample2.png)
 
