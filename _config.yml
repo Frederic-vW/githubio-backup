@@ -1,5 +1,5 @@
 #theme: jekyll-theme-architect
-theme: jekyll-theme-cayman
+#theme: jekyll-theme-cayman
 #theme: jekyll-theme-dinky
 #theme: jekyll-theme-hacker
 #theme: jekyll-theme-leap-day
@@ -14,3 +14,4 @@ title: GDS projects
 description: experiments and models
 logo: patterns2.png
 markdown: kramdown
+theme: "just-the-docs"
