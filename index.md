@@ -9,13 +9,15 @@ Here's an example:
 ![](eeg_128_loop.gif)
 -->
 
+<!--
 <script>
   console.log("js-test");
   alert("test!");
 </script>
+-->
 
 <p>
-<div id="copypaste" style="display: none;">
+<div id="copypaste" style="display: block;">
 Paste your data into the box: 
 <input type="text" id="paste-input" placeholder=">>> data here <<<">
 </div>
