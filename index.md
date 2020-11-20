@@ -32,9 +32,28 @@ A non-interpolated microstate sequence:
 An interpolated microstate sequence:
 <video src="S002R02_avgref_t1000-2000_microstates_ip.mp4" width="760" height="380" controls preload></video>
 
-### Clustering methods
+## Microstate sequence analysis
 
-Here's an example:  
+### Markovianity
+
+### Shannon entropy
+
+### Entropy rate
+
+### Microstate frequency analysis
+
+Time-lagged mutual information:
+$$
+\begin{align*}
+  I(\tau) & = H(X_{t+\tau}) - H(X_{t+\tau} \vert X_{t})
+\end{align*}
+$$
+
+
+## Amplitude and phase patterns
+
+At each EEG electrode, amplitude-modulates oscillations are observed. These can be characterized completely by their analytic amplitude and analytic phase.
+
 <!--
 ![](eeg_128_loop.gif)
 -->
@@ -60,13 +79,6 @@ Here's an example:
 <!--
 and the mp4 version:
 -->
-
-
-$$
-\begin{align*}
-  I(\tau) & = H(X_{t+\tau}) - H(X_{t+\tau} \vert X_{t})
-\end{align*}
-$$
 
 <!--
 https://lyk6756.github.io/2016/11/25/write_latex_equations.html
@@ -98,52 +110,50 @@ and ...
 ![Conformal map](pic2.png)
 -->
 
+<!--
 You can use the [editor on GitHub](https://github.com/Frederic-vW/Frederic-vW.github.io/edit/master/index.md) to maintain and preview the content for your website in Markdown files.
-
 Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
-
 Absolute links:
 Try the code for yourself (opens in new window): [online analysis](analyze.html){:target="_blank" rel="noopener"}
+-->
 
+<!--
 | Column-1  | Column-2  | Column-3 |
 |:----------|:----------|:---------|
 | 1         | A         | abc      |
 | 2         | B         | bcd      |
 | 3         | C         | cde      |
 | 4         | D         | def      |
+-->
 
-
+<!--
 ```markdown
 ### Statistical characteristics of microstate sequences
-
 Microstate sequences can characterized by the probability distribution of the microstate labels, and the transition matrix $T$, which contains the conditional probabilities of a transition from label $S_i$ at time $t$ to label $S_j$ at time $t+1$.
-
 ### Markovianity
 A stationary first-order Markov process is fully described by its initial symbol distribution $p_0$, and its transition matrix $T_{ij}$.
-
 ### Microstate periodicity
-
 Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
-
 - Bulleted
 - List
-
 1. Numbered
 2. List
-
 **Bold** and _Italic_ and `Code` text
-
 [UNSW](https://medicalsciences.med.unsw.edu.au/research/groups/translational-neuroscience-facility)  
 and  
 ![Conformal map](pic2.png)
 ```
+-->
 
+<!--
 For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
+-->
 
+<!--
 ### Jekyll Themes
-
 Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/Frederic-vW/Frederic-vW.github.io/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
-
+-->
+<!--
 ### Support or Contact
-
 Having trouble with Pages? Check out our [documentation](https://help.github.com/categories/github-pages-basics/) or [contact support](https://github.com/contact) and we’ll help you sort it out.
+-->
