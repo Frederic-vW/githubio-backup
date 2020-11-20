@@ -1,6 +1,17 @@
 # Resting-state EEG
 
 <p id="toc" class="toc"></p>
+<!-- added jQuery TOC -->
+<script>
+$('#toc').fixedTOC({
+  menuOpens: 'click', // or 'mouseenter'
+	scrollSpeed: 1000,
+	menuSpeed: 300,
+	useSubMenus: true,
+	resetSubMenus: true,
+	topLinkWorks: true
+});
+</script>
 
 Multi-channel EEG activity is usually analyzed by looking at the set of single channel time series:
 
