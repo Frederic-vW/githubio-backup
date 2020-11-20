@@ -9,7 +9,8 @@ Multivariate time series are difficult to visualize. In motion, surface electric
 <!--
 <video src="S029R02_avgref_t1000-2000_graph.mp4" width="380" height="380" controls preload></video>
 -->
-<video src="S002R02_avgref_t1000-2000_graph.mp4" width="380" height="380" controls preload></vi
+<video src="S002R02_avgref_t1000-2000_graph.mp4" width="380" height="380" controls preload></video>
+
 The animation is slowed down 16 times compared to real-life oscillations. In other words, the 100 second animation represents 6.25 seconds real EEG time.
 The oscillatory activity over the occipital part of the brain has a main frequency of approximately 11 Hz, i.e. within the alpha frequency band (8-12 Hz). 
 
