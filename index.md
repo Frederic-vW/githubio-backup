@@ -18,9 +18,11 @@ See more at the [example site](page1.md)
 -->
 
 
-## EEG microstate analysis
+## Discrete EEG patterns
 
-### Clustering
+### EEG microstate analysis
+
+#### Clustering
 To find some representative EEG topographies, data vectors taken at peaks of the GFP time course are passed through a clustering procedure. e.g. the modified K-means algorithm. The EEG shown above contains 61 different channels, so clustering occurs in a 61-dimensional space. As this is impossible to visualize, a two-dimensional projection (t-SNE algorithm) can be seen here, where each of the four microstates is represented with a different colour (A: black, B: blue, C: red, D: yellow):
 
 ![tsne_embedding](tsne_p100_scaled.png | width=100)
@@ -40,15 +42,15 @@ An interpolated microstate sequence:
 <video src="S002R02_avgref_t1000-2000_microstates_ip.mp4" width="760" height="380" controls preload></video>
 -->
 
-## Microstate sequence analysis
+#### Microstate sequence analysis
 
-### Markovianity
+##### Shannon entropy
 
-### Shannon entropy
+##### Entropy rate
 
-### Entropy rate
+##### The Markov property
 
-### Microstate frequency analysis
+##### Microstate frequency analysis
 
 Time-lagged mutual information:
 $$
@@ -58,9 +60,13 @@ $$
 $$
 
 
-## Amplitude and phase patterns
+## Continuous EEG patterns
 
+### Amplitude and phase patterns
 At each EEG electrode, amplitude-modulates oscillations are observed. These can be characterized completely by their analytic amplitude and analytic phase.
+
+#### Phase rotors
+
 
 <!--
 ![](eeg_128_loop.gif)
