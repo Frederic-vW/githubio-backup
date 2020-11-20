@@ -1,5 +1,8 @@
 # Resting-state EEG
 
+* Table of contents (test):
+{ :toc }
+
 Multi-channel EEG activity is usually analyzed by looking at the set of single channel time series:
 
 ![eeg_sample](eeg_sample2.png)
