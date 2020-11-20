@@ -74,7 +74,7 @@ More information in [Wegner2020](#ref1).
 
 
 ## References
-<a name="ref1">[1]</a> von Wegner, F., Bauer, S., Rosenow, F., Triesch, J., Laufs, H. (2020). EEG microstate periodicity explained by rotating phase patterns of resting-state alpha oscillations. Sep 24;224:117372. doi: 10.1016/j.neuroimage.2020.117372. 
+<a name="ref1">[1]</a> von Wegner, F., Bauer, S., Rosenow, F., Triesch, J., Laufs, H. (2020). EEG microstate periodicity explained by rotating phase patterns of resting-state alpha oscillations. Sep 24;224:117372. [doi: 10.1016/j.neuroimage.2020.117372](doi: 10.1016/j.neuroimage.2020.117372){:target="_blank" rel="noopener"} 
 
 <!--
 ![](eeg_128_loop.gif)
