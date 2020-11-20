@@ -41,7 +41,22 @@
     
   </head>
   <body>
+    <!--
     <a id="skip-to-content" href="#content">Skip to the content.</a>
+    -->
+    
+    <p id="toc" class="toc"></p>
+    <!-- added jQuery TOC -->
+    <script>
+    $('#toc').fixedTOC({
+      menuOpens: 'click', // or 'mouseenter'
+      scrollSpeed: 1000,
+      menuSpeed: 300,
+      useSubMenus: true,
+      resetSubMenus: true,
+      topLinkWorks: true
+    });
+    </script>
     
     <header class="page-header" role="banner">
       <!--
