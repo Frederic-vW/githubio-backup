@@ -26,7 +26,7 @@ See more at the [example site](page1.md)
 #### Clustering
 To find some representative EEG topographies, data vectors taken at peaks of the GFP time course are passed through a clustering procedure. e.g. the modified K-means algorithm. The EEG shown above contains 61 different channels, so clustering occurs in a 61-dimensional space. As this is impossible to visualize, a two-dimensional projection (t-SNE algorithm) can be seen here, where each of the four microstates is represented with a different colour (A: black, B: blue, C: red, D: yellow):
 
-![tsne_embedding](tsne_p100_scaled.png | width=100)
+![tsne_embedding](tsne_p100_scaled.png)
 
 In two dimensions, the clustering does not look great, reflecting the continuous nature of EEG topographic patterns discussed below.
 
@@ -65,13 +65,13 @@ $$
 
 ### Amplitude and phase patterns
 At each EEG electrode, amplitude-modulates oscillations are observed. These can be characterized completely by their analytic amplitude and analytic phase.
-More information in [Wegner2020]{#Wegner2020}.
+More information in [Wegner2020](#ref1).
 
 #### Phase rotors
 
 
 ## References
-<a name="Wegner2020">[1]</a> von Wegner, F., Bauer, S., Rosenow, F., Triesch, J., Laufs, H. (2020). EEG microstate periodicity explained by rotating phase patterns of resting-state alpha oscillations. Sep 24;224:117372. doi: 10.1016/j.neuroimage.2020.117372. 
+<a name="ref1">[1]</a> von Wegner, F., Bauer, S., Rosenow, F., Triesch, J., Laufs, H. (2020). EEG microstate periodicity explained by rotating phase patterns of resting-state alpha oscillations. Sep 24;224:117372. doi: 10.1016/j.neuroimage.2020.117372. 
 
 <!--
 ![](eeg_128_loop.gif)
