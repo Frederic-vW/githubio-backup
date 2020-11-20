@@ -36,7 +36,10 @@ In two dimensions, the clustering does not look great, reflecting the continuous
 The idea behing the method is to represent each instantaneous EEG topography by only one of the four microstates. This is best shown in a movie: the continuous 2-20 Hz EEG is on the left, and the best fitting microstate is on the right. Of note, polarity (red/blue) is ignored.
 <!-- A non-interpolated microstate sequence: -->
 
+<video src="S002R02_avgref_t1000-2000_microstates3_noip.mp4" width="760" height="380" controls preload></video>
+<!--
 <video src="S002R02_avgref_t1000-2000_microstates_noip.mp4" width="760" height="380" controls preload></video>
+-->
 
 <!--
 An interpolated microstate sequence:
