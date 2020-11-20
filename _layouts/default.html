@@ -45,19 +45,6 @@
     <a id="skip-to-content" href="#content">Skip to the content.</a>
     -->
     
-    <p id="toc" class="toc"></p>
-    <!-- added jQuery TOC -->
-    <script>
-    $('#toc').fixedTOC({
-      menuOpens: 'click', // or 'mouseenter'
-      scrollSpeed: 1000,
-      menuSpeed: 300,
-      useSubMenus: true,
-      resetSubMenus: true,
-      topLinkWorks: true
-    });
-    </script>
-    
     <header class="page-header" role="banner">
       <!--
       <h1 class="project-name">{{ page.title | default: site.title | default: site.github.repository_name }}</h1>
@@ -80,6 +67,20 @@
     </header>
     
     <main id="content" class="main-content" role="main">
+      
+      <!-- added jQuery TOC -->
+      <p id="toc" class="toc"></p>
+      <script>
+      $('#toc').fixedTOC({
+        menuOpens: 'click', // or 'mouseenter'
+        scrollSpeed: 1000,
+        menuSpeed: 300,
+        useSubMenus: true,
+        resetSubMenus: true,
+        topLinkWorks: true
+      });
+      </script>
+      
       {% include toc.html html=content %}
       {{ content }}
 
