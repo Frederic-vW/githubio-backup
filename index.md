@@ -69,6 +69,7 @@ $$
 \end{align*}
 $$
 
+![tsne_embedding](AIF_example_20080514.png)
 
 ## Continuous EEG patterns
 
@@ -77,6 +78,8 @@ At each EEG electrode, amplitude-modulates oscillations are observed. These can 
 More information in [Wegner2020](#ref1).
 
 #### Phase rotors
+
+<video src="20080514_t24000-24300_cont.mp4" width="380" height="380" controls preload></video>
 
 
 ## References
