@@ -2,17 +2,20 @@
 
 Multi-channel EEG activity is usually analyzed by looking at the set of single channel time series:
 
-![eeg_sample](eeg_sample2.png)
+![eeg_sample](eeg_sample3.png)
 
 Multivariate time series are difficult to visualize. In motion, surface electrical activity looks more like this:
 
 <!--
 <video src="S029R02_avgref_t1000-2000_graph.mp4" width="380" height="380" controls preload></video>
 -->
+<!--
 <video src="S002R02_avgref_t1000-2000_graph.mp4" width="380" height="380" controls preload></video>
+-->
+<video src="20080514_t24000-24300_graph.mp4" width="380" height="380" controls preload></video>
 
-The animation is slowed down 16 times compared to real-life oscillations. In other words, the 100 second animation represents 6.25 seconds real EEG time.
-The oscillatory activity over the occipital part of the brain has a main frequency of approximately 11 Hz, i.e. within the alpha frequency band (8-12 Hz). 
+The animation is slowed down 25 times compared to real-life oscillations. In other words, the 30 second animation represents 1.2 seconds real EEG time.
+The oscillatory activity over the occipital part of the brain has a main frequency of approximately 10 Hz, i.e. within the alpha frequency band (8-12 Hz). 
 
 <!--
 See more at the [example site](page1.md)
@@ -36,15 +39,18 @@ In two dimensions, the clustering does not look great, reflecting the continuous
 The idea behing the method is to represent each instantaneous EEG topography by only one of the four microstates. This is best shown in a movie: the continuous 2-20 Hz EEG is on the left, and the best fitting microstate is on the right. Of note, polarity (red/blue) is ignored.
 <!-- A non-interpolated microstate sequence: -->
 
+<!--
 <video src="S002R02_avgref_t1000-2000_microstates3_noip.mp4" width="760" height="380" controls preload></video>
+-->
 <!--
 <video src="S002R02_avgref_t1000-2000_microstates_noip.mp4" width="760" height="380" controls preload></video>
 -->
-
 <!--
 An interpolated microstate sequence:
 <video src="S002R02_avgref_t1000-2000_microstates_ip.mp4" width="760" height="380" controls preload></video>
 -->
+<video src="20080514_t24000-24300_ms_t.mp4" width="760" height="380" controls preload></video>
+
 
 #### Microstate sequence analysis
 
