@@ -69,7 +69,7 @@ $$
 \end{align*}
 $$
 
-![tsne_embedding](AIF_example_20080514.png)
+![aif_example](AIF_example_20080514.png)
 
 ## Continuous EEG patterns
 
@@ -79,7 +79,7 @@ More information in [Wegner2020](#ref1).
 
 #### Phase rotors
 
-<video src="20080514_t24000-24300_cont.mp4" width="380" height="380" controls preload></video>
+<video src="20080514_t24000-24300_cont.mp4" width="750" height="250" controls preload></video>
 
 
 ## References
