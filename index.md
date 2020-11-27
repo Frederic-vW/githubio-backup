@@ -12,7 +12,9 @@ While temporal patterns like oscillations are clearly seen, the spatial ordering
 <!--
 <video src="S002R02_avgref_t1000-2000_graph.mp4" width="380" height="380" controls preload></video>
 -->
-<video align="center" src="20080514_t24000-24300_graph.mp4" width="380" height="380" controls preload></video>
+<p align="center">
+<video src="20080514_t24000-24300_graph.mp4" width="380" height="380" controls preload></video>
+</p>
 
 The animation is slowed down 25 times compared to real-life oscillations. In other words, 1.2 seconds real time are expanded to a 30 second animation.
 
@@ -28,7 +30,9 @@ See more at the [example site](page1.md)
 #### Clustering
 To find some representative EEG topographies, data vectors taken at peaks of the GFP time course are passed through a clustering procedure. e.g. the modified K-means algorithm. The EEG shown above contains 61 different channels, so clustering occurs in a 61-dimensional space. As this is impossible to visualize, a two-dimensional projection ([t-SNE algorithm](https://scikit-learn.org/stable/modules/generated/sklearn.manifold.TSNE.html){:target="_blank" rel="noopener"}) can be seen here, where each of the four microstates is represented with a different colour (A: black, B: blue, C: red, D: yellow):
 
+<p align="center">
 ![tsne_embedding](tsne_p100_20080514.png)
+</p>
 
 In two dimensions, the clustering does not look great, reflecting the continuous nature of EEG topographic patterns discussed below.
 
@@ -68,7 +72,9 @@ $$
 \end{align*}
 $$
 
+<p align="center">
 ![aif_example](AIF_example_20080514.png)
+</p>
 
 ## Continuous EEG patterns
 
