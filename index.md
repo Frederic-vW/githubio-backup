@@ -1,10 +1,10 @@
 # Resting-state EEG
 
-Multi-channel EEG activity is usually analyzed by looking at the set of single channel time series:
+Multi-channel EEG recordings are often visualized as an array of time series, reflecting the voltage time course at each electrode. The figure below shows 10 seconds of EEG activity, recorded with 30 electrodes. This sample shows typical eyes-closed brain activity in a task-free ("resting-state") condition, with alpha frequency band oscillations (8-12 Hz) over the occipital electrodes (O1, O2).
 
 ![eeg_sample](eeg_sample3.png)
 
-Multivariate time series are difficult to visualize. In motion, surface electrical activity looks more like this:
+While temporal patterns like oscillations are clearly seen, the spatial ordering is more difficult to reconstruct visually. Animating a short segment (1.2 seconds) of the same recording, surface electrical activity looks like this:
 
 <!--
 <video src="S029R02_avgref_t1000-2000_graph.mp4" width="380" height="380" controls preload></video>
@@ -14,8 +14,7 @@ Multivariate time series are difficult to visualize. In motion, surface electric
 -->
 <video src="20080514_t24000-24300_graph.mp4" width="380" height="380" controls preload></video>
 
-The animation is slowed down 25 times compared to real-life oscillations. In other words, the 30 second animation represents 1.2 seconds real EEG time.
-The oscillatory activity over the occipital part of the brain has a main frequency of approximately 10 Hz, i.e. within the alpha frequency band (8-12 Hz). 
+The animation is slowed down 25 times compared to real-life oscillations. In other words, 1.2 seconds real time are expanded to a 30 second animation.
 
 <!--
 See more at the [example site](page1.md)
@@ -29,7 +28,7 @@ See more at the [example site](page1.md)
 #### Clustering
 To find some representative EEG topographies, data vectors taken at peaks of the GFP time course are passed through a clustering procedure. e.g. the modified K-means algorithm. The EEG shown above contains 61 different channels, so clustering occurs in a 61-dimensional space. As this is impossible to visualize, a two-dimensional projection ([t-SNE algorithm](https://scikit-learn.org/stable/modules/generated/sklearn.manifold.TSNE.html){:target="_blank" rel="noopener"}) can be seen here, where each of the four microstates is represented with a different colour (A: black, B: blue, C: red, D: yellow):
 
-![tsne_embedding](tsne_p100_scaled.png)
+![tsne_embedding](tsne_p100_20080514.png)
 
 In two dimensions, the clustering does not look great, reflecting the continuous nature of EEG topographic patterns discussed below.
 
@@ -83,7 +82,9 @@ More information in [Wegner2020](#ref1).
 
 
 ## References
-<a name="ref1">[1]</a> von Wegner, F., Bauer, S., Rosenow, F., Triesch, J., Laufs, H. (2020). EEG microstate periodicity explained by rotating phase patterns of resting-state alpha oscillations. Sep 24;224:117372. [doi: 10.1016/j.neuroimage.2020.117372](doi: 10.1016/j.neuroimage.2020.117372){:target="_blank" rel="noopener"} 
+<a name="ref1">[1]</a> Michel, C.M., Koenig, T. (2020). EEG microstates as a tool for studying the temporal dynamics of whole-brain neuronal networks: A review. NeuroImage 180:577-593. [doi.org/10.1016/j.neuroimage.2017.11.062](doi.org/10.1016/j.neuroimage.2017.11.062){:target="_blank" rel="noopener"}
+
+<a name="ref1">[2]</a> von Wegner, F., Bauer, S., Rosenow, F., Triesch, J., Laufs, H. (2020). EEG microstate periodicity explained by rotating phase patterns of resting-state alpha oscillations. NeuroImage, Sep 24;224:117372. [doi: 10.1016/j.neuroimage.2020.117372](doi: 10.1016/j.neuroimage.2020.117372){:target="_blank" rel="noopener"} 
 
 <!--
 ![](eeg_128_loop.gif)
