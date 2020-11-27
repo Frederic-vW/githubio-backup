@@ -12,7 +12,7 @@ While temporal patterns like oscillations are clearly seen, the spatial ordering
 <!--
 <video src="S002R02_avgref_t1000-2000_graph.mp4" width="380" height="380" controls preload></video>
 -->
-<video src="20080514_t24000-24300_graph.mp4" width="380" height="380" controls preload></video>
+<video align="center" src="20080514_t24000-24300_graph.mp4" width="380" height="380" controls preload></video>
 
 The animation is slowed down 25 times compared to real-life oscillations. In other words, 1.2 seconds real time are expanded to a 30 second animation.
 
