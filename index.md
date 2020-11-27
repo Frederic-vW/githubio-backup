@@ -22,13 +22,17 @@ The animation is slowed down 25 times compared to real-life oscillations. In oth
 See more at the [example site](page1.md)
 -->
 
-
+<!--
 ## Discrete EEG patterns
+Adopting a discrete perspective, the sequence 
+-->
 
 ### EEG microstate analysis
+The aim of EEG microstate analysis is to represent the variety of EEG patterns shown above by a small set of representative patterns [Michel2018](#ref1).
 
 #### Clustering
-To find some representative EEG topographies, data vectors taken at peaks of the GFP time course are passed through a clustering procedure. e.g. the modified K-means algorithm. The EEG shown above contains 61 different channels, so clustering occurs in a 61-dimensional space. As this is impossible to visualize, a two-dimensional projection ([t-SNE algorithm](https://scikit-learn.org/stable/modules/generated/sklearn.manifold.TSNE.html){:target="_blank" rel="noopener"}) can be seen here, where each of the four microstates is represented with a different colour (A: black, B: blue, C: red, D: yellow):
+These representative EEG topographies are computed via a clustering algorithm, whose input are EEG data vectors taken at peaks of the GFP time course. A popular choice in this context is a modified K-means algorithm. As the EEG shown above contains 30 channels, clustering occurs in a 30-dimensional space. As this is impossible to visualize, a two-dimensional projection is shown below, obtained from the ([t-SNE algorithm](https://scikit-learn.org/stable/modules/generated/sklearn.manifold.TSNE.html){:target="_blank" rel="noopener"}).
+Each of the four microstates is represented with a different colour (A: black, B: blue, C: red, D: yellow):
 
 <p align="center">
 <img width="400" height="400" src="tsne_p100_20080514.png">
@@ -86,7 +90,7 @@ $$
 
 ### Amplitude and phase patterns
 At each EEG electrode, amplitude-modulates oscillations are observed. These can be characterized completely by their analytic amplitude and analytic phase.
-More information in [Wegner2020](#ref1).
+More information in [Wegner2020](#ref2).
 
 #### Phase rotors
 
@@ -96,9 +100,9 @@ More information in [Wegner2020](#ref1).
 
 
 ## References
-<a name="ref1">[1]</a> Michel, C.M., Koenig, T. (2020). EEG microstates as a tool for studying the temporal dynamics of whole-brain neuronal networks: A review. NeuroImage 180:577-593. [doi.org/10.1016/j.neuroimage.2017.11.062](doi.org/10.1016/j.neuroimage.2017.11.062){:target="_blank" rel="noopener"}
+<a name="ref1">[1]</a> Michel, C.M., Koenig, T. (2018). EEG microstates as a tool for studying the temporal dynamics of whole-brain neuronal networks: A review. NeuroImage 180:577-593. [doi.org/10.1016/j.neuroimage.2017.11.062](doi.org/10.1016/j.neuroimage.2017.11.062){:target="_blank" rel="noopener"}
 
-<a name="ref1">[2]</a> von Wegner, F., Bauer, S., Rosenow, F., Triesch, J., Laufs, H. (2020). EEG microstate periodicity explained by rotating phase patterns of resting-state alpha oscillations. NeuroImage, Sep 24;224:117372. [doi: 10.1016/j.neuroimage.2020.117372](doi: 10.1016/j.neuroimage.2020.117372){:target="_blank" rel="noopener"} 
+<a name="ref2">[2]</a> von Wegner, F., Bauer, S., Rosenow, F., Triesch, J., Laufs, H. (2020). EEG microstate periodicity explained by rotating phase patterns of resting-state alpha oscillations. NeuroImage, Sep 24;224:117372. [doi: 10.1016/j.neuroimage.2020.117372](doi: 10.1016/j.neuroimage.2020.117372){:target="_blank" rel="noopener"} 
 
 <!--
 ![](eeg_128_loop.gif)
