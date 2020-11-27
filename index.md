@@ -78,7 +78,9 @@ More information in [Wegner2020](#ref1).
 
 #### Phase rotors
 
+<p align="center">
 <video src="20080514_t24000-24300_cont.mp4" width="750" height="250" controls preload></video>
+</p>
 
 
 ## References
