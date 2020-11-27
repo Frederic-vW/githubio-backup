@@ -31,8 +31,11 @@ See more at the [example site](page1.md)
 To find some representative EEG topographies, data vectors taken at peaks of the GFP time course are passed through a clustering procedure. e.g. the modified K-means algorithm. The EEG shown above contains 61 different channels, so clustering occurs in a 61-dimensional space. As this is impossible to visualize, a two-dimensional projection ([t-SNE algorithm](https://scikit-learn.org/stable/modules/generated/sklearn.manifold.TSNE.html){:target="_blank" rel="noopener"}) can be seen here, where each of the four microstates is represented with a different colour (A: black, B: blue, C: red, D: yellow):
 
 <p align="center">
-![tsne_embedding](tsne_p100_20080514.png)
+<img width="400" height="400" src="tsne_p100_20080514.png">
 </p>
+<!--
+![tsne_embedding](tsne_p100_20080514.png)
+-->
 
 In two dimensions, the clustering does not look great, reflecting the continuous nature of EEG topographic patterns discussed below.
 
@@ -73,8 +76,11 @@ $$
 $$
 
 <p align="center">
-![aif_example](AIF_example_20080514.png)
+<img width="1200" height="300" src="AIF_example_20080514.png">
 </p>
+<!--
+![aif_example](AIF_example_20080514.png)
+-->
 
 ## Continuous EEG patterns
 
