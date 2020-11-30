@@ -13,10 +13,10 @@ While temporal patterns like oscillations are clearly seen, the spatial ordering
 <video src="S002R02_avgref_t1000-2000_graph.mp4" width="380" height="380" controls preload></video>
 -->
 <p align="center">
-<video src="20080514_t24000-24300_graph.mp4" width="380" height="380" controls preload></video>
+<video src="20080514_t24000-24300_graph_1_30.mp4" width="380" height="380" controls preload></video>
 </p>
 
-The animation was slowed down 25 times with regard to real time. In other words, 1.2 seconds real time are expanded to a 30 second animation. Voltage is represented by colour, the blue-red spectrum covers the range [-33 µV, +23 µV], or $$\left[-33 \mu V, +23 \mu V \right]$$. 
+The animation was slowed down 25 times with regard to real time. In other words, 1.2 seconds real time are expanded to a 30 second animation. Voltage is represented by colour, the blue-red spectrum covers the range [-33 µV, +23 µV]. 
 
 <!--
 See more at the [example site](page1.md)
@@ -28,11 +28,11 @@ Adopting a discrete perspective, the sequence
 -->
 
 ### EEG microstate analysis
-The aim of EEG microstate analysis is to represent the variety of EEG patterns shown above by a small set of representative patterns [Michel2018](#ref1).
+The aim of EEG microstate analysis is to describe the variety of EEG patterns shown above by a small set of representative patterns ([Michel2018](#ref1)).
 
 #### Clustering
-These representative EEG topographies are computed via a clustering algorithm, whose input are EEG data vectors taken at peaks of the GFP time course. A popular choice in this context is a modified K-means algorithm. As the EEG shown above contains 30 channels, clustering occurs in a 30-dimensional space. As this is impossible to visualize, a two-dimensional projection is shown below, obtained from the ([t-SNE algorithm](https://scikit-learn.org/stable/modules/generated/sklearn.manifold.TSNE.html){:target="_blank" rel="noopener"}).
-Each of the four microstates is represented with a different colour (A: black, B: blue, C: red, D: yellow):
+These representative EEG topographies (microstates) are computed via a clustering algorithm, whose input are EEG data vectors taken at peaks of the GFP time course. A popular choice in this context is a modified K-means algorithm ([Pascual-Marqui1995](#ref2)). With 30 EEG channels, as shown above, clustering occurs in a 30-dimensional space which is impossible to visualize. A two-dimensional visualization of the clustering is shown below, obtained from the [t-SNE algorithm](https://scikit-learn.org/stable/modules/generated/sklearn.manifold.TSNE.html){:target="_blank" rel="noopener"}.
+Each of the four microstates is represented with a different colour (microstate class A: black, B: blue, C: red, D: yellow):
 
 <p align="center">
 <img width="400" height="400" src="tsne_p100_20080514.png">
@@ -41,12 +41,23 @@ Each of the four microstates is represented with a different colour (A: black, B
 ![tsne_embedding](tsne_p100_20080514.png)
 -->
 
-In two dimensions, the clustering does not look great, reflecting the continuous nature of EEG topographic patterns discussed below.
+In two dimensions, the data points do not show a nice clustering behaviour. The clustering labels neighbouring data points with the same colour (microstate class), but their separation into four clusters seems a bit arbitrary. This is partially due to the reduction to 2 dimensions, but also due to the continuous nature of EEG topographic patterns, as will be shown below.
+
+The microstates found are labelled ms-A,..., ms-D, following a commonly used convention ([Michel2018](#ref1)):
+
+<p align="center">
+<img width="400" height="400" src="group_ms30_400.png">
+</p>
+
 
 <!--
 <video src="S029R02_avgref_t1000-2000_microstates.mp4" width="760" height="380" controls preload></video>
 -->
-The idea behing the method is to represent each instantaneous EEG topography by only one of the four microstates. This is best shown in a movie: the continuous 2-20 Hz EEG is on the left, and the best fitting microstate is on the right. Of note, polarity (red/blue) is ignored.
+If we accept these clustering results, the EEG data set can now be represented by a sequence of microstates. Instead of using the voltage values at each of the 30 electrodes and each moment, we use the microstate label (A-D) that best matches the voltage distribution at that time. The similarity between the current EEG vector and each microstate is measured by their *squared* correlation coefficient, thus ignoring polarity.
+The 1.2 second EEG segment animated above, for example, is defined by an array of 9000 floating point values (300 samples x 30 channels). The microstate algorithm reduced that to a sequence of 300 microstate labels, something like: AAADABCCBD...
+In terms of data compression, 30 floating point values of 64 bit each are reduced to 1 label with 2 bit information (4 labels), or by a factor of 960. Obviously, this factor increases when more electrodes are used.
+The whole idea is best shown in an animation (below): the top row shows the GFP time course, with the moving yellow dot indicating the current time point. Below, the same 1.2 sec. EEG segment (1-30 Hz) used above is shown on the left, now spatially interpolated onto a regular 128 x 128 grid, as an approximation to the real voltage distribution across the head surface. The best fitting microstate is shown on the right. Since the algorithm ignores polarity, a microstate matches when its symmetry is similar to the current EEG topography, even when red/blue are inverted. Usually, the fit is best at local GFP peaks.
+
 <!-- A non-interpolated microstate sequence: -->
 
 <!--
@@ -63,8 +74,10 @@ An interpolated microstate sequence:
 
 
 #### Microstate sequence analysis
+Once the multi-channel EEG data set is compressed into the simple microstate label sequence, the main question is: which EEG properties are reflected by a microstate sequence?
 
 ##### Shannon entropy
+Microstate sequences are often characterized by the 'ratio of time covered', or RTT, of each microstate. When divided by the total time of the recording, this is the same thing as the probability of finding a certain microstate anywhere in that recording.
 
 ##### Entropy rate
 
@@ -87,6 +100,7 @@ $$
 -->
 
 ## Continuous EEG patterns
+Microstate frequency analysis shows that microstate labels recur periodically, with frequencies related to the EEG alpha frequency. To better understand these oscillatory dynamics, let's have a look at pure alpha frequency-band oscillations.
 
 ### Amplitude and phase patterns
 At each EEG electrode, amplitude-modulates oscillations are observed. These can be characterized completely by their analytic amplitude and analytic phase.
@@ -102,7 +116,9 @@ More information in [Wegner2020](#ref2).
 ## References
 <a name="ref1">[1]</a> Michel, C.M., Koenig, T. (2018). EEG microstates as a tool for studying the temporal dynamics of whole-brain neuronal networks: A review. NeuroImage 180:577-593. [doi.org/10.1016/j.neuroimage.2017.11.062](doi.org/10.1016/j.neuroimage.2017.11.062){:target="_blank" rel="noopener"}
 
-<a name="ref2">[2]</a> von Wegner, F., Bauer, S., Rosenow, F., Triesch, J., Laufs, H. (2020). EEG microstate periodicity explained by rotating phase patterns of resting-state alpha oscillations. NeuroImage, Sep 24;224:117372. [doi: 10.1016/j.neuroimage.2020.117372](doi: 10.1016/j.neuroimage.2020.117372){:target="_blank" rel="noopener"} 
+<a name="ref2">[2]</a> Pascual-Marqui, R.D. , Michel, C.M. , Lehmann, D. (1995). Segmentation of brain electrical activity into microstates: model estimation and validation. IEEE Trans. Biomed. Eng. 42(7):658-665. [10.1109/10.391164](10.1109/10.391164){:target="_blank" rel="noopener"}
+
+<a name="ref3">[3]</a> von Wegner, F., Bauer, S., Rosenow, F., Triesch, J., Laufs, H. (2020). EEG microstate periodicity explained by rotating phase patterns of resting-state alpha oscillations. NeuroImage, Sep 24;224:117372. [doi: 10.1016/j.neuroimage.2020.117372](doi: 10.1016/j.neuroimage.2020.117372){:target="_blank" rel="noopener"} 
 
 <!--
 ![](eeg_128_loop.gif)
