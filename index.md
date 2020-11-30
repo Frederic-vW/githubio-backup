@@ -16,7 +16,7 @@ While temporal patterns like oscillations are clearly seen, the spatial ordering
 <video src="20080514_t24000-24300_graph.mp4" width="380" height="380" controls preload></video>
 </p>
 
-The animation is slowed down 25 times compared to real-life oscillations. In other words, 1.2 seconds real time are expanded to a 30 second animation.
+The animation was slowed down 25 times with regard to real time. In other words, 1.2 seconds real time are expanded to a 30 second animation. Voltage is represented by colour, the blue-red spectrum covers the range $$\left[-33 \mu V, +23 \mu V \right]$$. 
 
 <!--
 See more at the [example site](page1.md)
