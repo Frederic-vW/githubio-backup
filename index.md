@@ -46,7 +46,7 @@ In two dimensions, the data points do not show a nice clustering behaviour. The 
 The microstates found are labelled ms-A,..., ms-D, following a commonly used convention ([Michel2018](#ref1)):
 
 <p align="center">
-<img width="400" height="400" src="group_ms30_400.png">
+<img width="400" height="100" src="group_ms30_400.png">
 </p>
 
 
