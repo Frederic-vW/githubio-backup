@@ -83,13 +83,28 @@ Microstate sequences are often characterized by the 'ratio of time covered', or 
 ##### The Markov property
 
 ##### Microstate frequency analysis
+For numerical time series, characteristic frequencies appear as peaks in the power spectral density (PSD). Resting state EEG alpha oscillations, for example, produce a PSD peak around 10 Hz, as seen below on the left. The Wiener–Khinchin theorem says that the same information can be expressd by the signal's autocorrelation function (ACF), where 10 Hz oscillations produce periodic peaks at multiples of 100 ms. For time lags at which the alpha oscillation is shifted by a half-cycle (50 ms, 150 ms,...), the autocorrelation is negative.
 
-Time-lagged mutual information:
+<p align="center">
+<img width="1200" height="300" src="img/20080514TT_PSD_ACF.png">
+</p>
+
+Using mutual information as an alternative to linear correlation, the statistical dependence between microstate labels at times $$t$$ and $$t+\tau$$ (time lag $$\tau$$) can be expressed by the time-lagged mutual information coefficients:
 $$
 \begin{align*}
   I(\tau) & = H(X_{t+\tau}) - H(X_{t+\tau} \vert X_{t})
 \end{align*}
 $$
+
+In analogy to the autocorrelation function (ACF), we call this the autoinformation function (AIF). For EEG alpha oscillations (10 Hz), we find 10 periodic AIF peaks at multiples of 50 ms and 100 ms (blue curve). In contrast to correlation, information terms are always positive, so negative ACF peaks also appear as positive AIF peaks.
+
+<p align="center">
+<img width="1200" height="300" src="img/20080514TT_PSD_ACF_AIF.png">
+</p>
+
+The first 100 entries of the microstate sequence animated above are: BBBADBBBBAAAAAAAADDDDDDCCABBBBBBBBBBAADDBBDDDDDBBBBBBBBBBDDABBBBBBBBACCCBBBBBBBDDDDBACCCCBBBBBACCBBB
+
+The AIF of the complete microstate sequence (30,000 samples) shows the same peaks at the single electrode voltage timecourse shown above.
 
 <p align="center">
 <img width="1200" height="300" src="img/AIF_example_20080514.png">
@@ -97,6 +112,9 @@ $$
 <!--
 ![aif_example](AIF_example_20080514.png)
 -->
+
+This demonstrates that the microstates themselves occur with a frequency around 10 Hz, and suggests that the networks associated with these microstate patterns activate periodically over time. If the whole process was determined by the information contained in the transition probability matrix T only, the AIF would decay as the confidence interval derived from surrogate sequences defined by T (gray, Markov CI $$\alpha=0.05$$).
+
 
 ## Continuous EEG patterns
 Microstate frequency analysis shows that microstate labels recur periodically, with frequencies related to the EEG alpha frequency. To better understand these oscillatory dynamics, let's have a look at pure alpha frequency-band oscillations.
