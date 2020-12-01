@@ -2,7 +2,7 @@
 
 Multi-channel EEG recordings are often visualized as an array of time series, reflecting the voltage time course at each electrode. The figure below shows 10 seconds of EEG activity, recorded with 30 electrodes. This sample shows typical eyes-closed brain activity in a task-free ("resting-state") condition, with alpha frequency band oscillations (8-12 Hz) over the occipital electrodes (O1, O2).
 
-![eeg_sample](eeg_sample3.png)
+![eeg_sample](img/eeg_sample3.png)
 
 While temporal patterns like oscillations are clearly seen, the spatial ordering is more difficult to reconstruct visually. Animating a short segment (1.2 seconds) of the same recording, surface electrical activity looks like this:
 
@@ -35,7 +35,7 @@ These representative EEG topographies (microstates) are computed via a clusterin
 Each of the four microstates is represented with a different colour (microstate class A: black, B: blue, C: red, D: yellow):
 
 <p align="center">
-<img width="400" height="400" src="tsne_p100_20080514.png">
+<img width="400" height="400" src="img/tsne_p100_20080514.png">
 </p>
 <!--
 ![tsne_embedding](tsne_p100_20080514.png)
@@ -46,7 +46,7 @@ In two dimensions, the data points do not show a nice clustering behaviour. The 
 The microstates found are labelled ms-A,..., ms-D, following a commonly used convention ([Michel2018](#ref1)):
 
 <p align="center">
-<img width="600" height="150" src="group_ms30_600.png">
+<img width="600" height="150" src="img/group_ms30_600.png">
 </p>
 
 <!--
@@ -92,7 +92,7 @@ $$
 $$
 
 <p align="center">
-<img width="1200" height="300" src="AIF_example_20080514.png">
+<img width="1200" height="300" src="img/AIF_example_20080514.png">
 </p>
 <!--
 ![aif_example](AIF_example_20080514.png)
