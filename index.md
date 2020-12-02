@@ -6,26 +6,12 @@ Multi-channel EEG recordings are often visualized as an array of time series, re
 
 While temporal patterns like oscillations are clearly seen, the spatial ordering is more difficult to reconstruct visually. Animating a short segment (1.2 seconds) of the same recording, surface electrical activity looks like this:
 
-<!--
-<video src="S029R02_avgref_t1000-2000_graph.mp4" width="380" height="380" controls preload></video>
--->
-<!--
-<video src="S002R02_avgref_t1000-2000_graph.mp4" width="380" height="380" controls preload></video>
--->
 <p align="center">
 <video src="mov/20080514_t24000-24300_graph_1_30.webm" width="380" height="380" controls preload></video>
 </p>
 
 The animation was slowed down 25 times with regard to real time. In other words, 1.2 seconds real time are expanded to a 30 second animation. Voltage is represented by colour, the blue-red spectrum covers the range [-33 µV, +23 µV]. 
 
-<!--
-See more at the [example site](page1.md)
--->
-
-<!--
-## Discrete EEG patterns
-Adopting a discrete perspective, the sequence 
--->
 
 ## EEG microstates
 The aim of EEG microstate analysis is to describe the variety of EEG patterns shown above by a small set of representative patterns ([Michel2018](#ref1)).
@@ -49,9 +35,7 @@ The microstates found are labelled ms-A,..., ms-D, following a commonly used con
 <img width="800" height="200" src="img/group_ms30_1200.png">
 </p>
 
-<!--
-<video src="S029R02_avgref_t1000-2000_microstates.mp4" width="760" height="380" controls preload></video>
--->
+
 The color bars below each map correspond to the colours used in the tSNE visualization above.
 
 If we accept these clustering results, the EEG data set can now be represented by a sequence of microstates. Instead of using the voltage values at each of the 30 electrodes and each moment, we use the microstate label (A-D) that best matches the voltage distribution at that time. The similarity between the current EEG vector and each microstate is measured by their *squared* correlation coefficient, thus ignoring polarity.  
@@ -61,18 +45,6 @@ In terms of data compression, 30 floating point values of 64 bit each are reduce
 The whole idea is best shown in an animation (below): the top row shows the GFP time course, with the moving yellow dot indicating the current time point. Below, the same 1.2 sec. EEG segment (1-30 Hz) used above is shown on the left, now spatially interpolated onto a regular 128 x 128 grid, as an approximation to the real voltage distribution across the head surface. The best fitting microstate is shown on the right. Since the algorithm ignores polarity, a microstate matches when its symmetry is similar to the current EEG topography, even when red/blue are inverted. Usually, the fit is best at local GFP peaks.  
 Try and hit pause when the yellow dot is at a GFP peak location, and compare the symmetry of the EEG topography on the left and on the right, and don't forget to ignore polarity!
 
-<!-- A non-interpolated microstate sequence: -->
-
-<!--
-<video src="S002R02_avgref_t1000-2000_microstates3_noip.mp4" width="760" height="380" controls preload></video>
--->
-<!--
-<video src="S002R02_avgref_t1000-2000_microstates_noip.mp4" width="760" height="380" controls preload></video>
--->
-<!--
-An interpolated microstate sequence:
-<video src="S002R02_avgref_t1000-2000_microstates_ip.mp4" width="760" height="380" controls preload></video>
--->
 <video src="mov/20080514_t24000-24300_ms_t.webm" width="760" height="380" controls preload></video>
 
 
@@ -82,7 +54,7 @@ Once the multi-channel EEG data set is compressed into the simple microstate lab
 #### Shannon entropy
 Microstate sequences are often characterized by the 'ratio of time covered', or RTT, of each microstate. When divided by the total time of the recording, this is the same thing as the probability of finding a certain microstate anywhere in that recording.  
 The Shannon entropy of this distribution is defined as $$ H(X) = -\sum_i P(X_i) \log_2 P(X_i) $$, where $$P(X_i)$$ are the probabilities of the microstate labels.
-The microstate distribution of the microstate sample above is $$p(A)=0.16, p(B)=0.53, p(C)=0.11, p(D)=0.2$$, and is shown below (center). The Shannon entropy for this distribution is $$H=1.72 bit$$. What is a large, and what is a small entropy value? The minimum entropy is $$H_{min}=0$$, and occurs when exactly one of the labels has probability one, for example $$p(B)=1$$ (could be any other), and all others have probability zero. This case is shown on the left. The maximum entropy occurs when all microstates have the same probability. In the case of 4 microstates, this means $$p(A)=...=p(D)=\frac{1}{4}$$, and $$H_{max}=\log_2(4) = 2$$.
+The distribution of the microstates A-D in the sample above is $$\[0.16, 0.53, 0.11, 0.2\]$$, and is shown below (center). The Shannon entropy for this distribution is $$H=1.72$$ bit. Is that a small or large entropy value? The minimum entropy is $$H_{min}=0$$ bit, and occurs when exactly one of the labels has probability one, for example $$P(B)=1$$ (or any other), and all others have probability zero. This case is shown on the left, and means that the occurrence of microstate B is absolutely certain, so the entropy (uncertainty) is zero. Maximum entropy occurs when all microstates have the same probability (maximum uncertainty of which state will occur). In the case of 4 microstates, this means $$P(A)=...=P(D)=\frac{1}{4}$$, and $$H_{max}=-4 \times \frac{1}{4} \log_2 \left( \frac{1}{4} \right) = 2$$.
 
 <p align="center">
 <img width="600" height="200" src="img/shannon_entropies.png">
@@ -106,6 +78,7 @@ For numerical time series, characteristic frequencies appear as peaks in the pow
 </p>
 
 Using mutual information as an alternative to linear correlation, the statistical dependence between microstate labels at times $$t$$ and $$t+\tau$$ (time lag $$\tau$$) can be expressed by the time-lagged mutual information coefficients:
+
 $$
 \begin{align*}
   I(\tau) & = H(X_{t+\tau}) - H(X_{t+\tau} \vert X_{t})
@@ -186,12 +159,6 @@ computed from the integral along any closed contour $$C$$. Counterclockwise rota
 ![](eeg_128_loop.gif)
 -->
 
-<!--
-<script>
-  console.log("js-test");
-  alert("test!");
-</script>
--->
 
 <!--
 <p><div id="copypaste" style="display: block;"> Paste your data into the box: 
@@ -204,9 +171,6 @@ computed from the integral along any closed contour $$C$$. Counterclockwise rota
 <p><div id="output-sequence-mapped"><strong>Mapped sequence: </strong></div></p>
 -->
 
-<!--
-and the mp4 version:
--->
 
 <!--
 https://lyk6756.github.io/2016/11/25/write_latex_equations.html
