@@ -103,6 +103,7 @@ In analogy to the autocorrelation function (ACF), we call this the autoinformati
 </p>
 
 The first 100 entries of the microstate sequence animated above are: BBBADBBBBAAAAAAAADDDDDDCCABBBBBBBBBBAADDBBDDDDDBBBBBBBBBBDDABBBBBBBBACCCBBBBBBBDDDDBACCCCBBBBBACCBBB
+
 Autocorrelation analysis cannot be applied to sequences of symbols or labels (sums, products, etc. are not defined), but mutual information analysis is possible. The AIF of the complete (30,000 sample) microstate sequence shows the same peaks as the single electrode voltage timecourse shown above. The time lag corresponding to this individual's alpha frequency is 97 ms.
 
 <p align="center">
@@ -130,6 +131,10 @@ The continuous dynamics are animated below. Alpha band activity is on the left (
 </p>
 
 Microstates try to capture the ongoing dynamics on the left. When separated into amplitude and phase dynamics, we see that the alpha amplitude changes very slowly and its maximum stays over occipital areas. The analytic phase, however, shows rotating phase patterns, or phase rotors. At the center of each rotor, where all phase values coincide, the phase is not defined, these sites are called phase singularities.
+
+<p align="center">
+<video src="20080514_t24000-24300_phase.webm" width="600" height="300" controls preload></video>
+</p>
 
 
 ## References
