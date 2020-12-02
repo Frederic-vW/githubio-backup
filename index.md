@@ -35,7 +35,7 @@ These representative EEG topographies (microstates) are computed via a clusterin
 Each of the four microstates is represented with a different colour (microstate class A: black, B: blue, C: red, D: yellow):
 
 <p align="center">
-<img width="400" height="400" src="img/tsne_p100_20080514.png">
+<img width="300" height="300" src="img/tsne_p100_20080514.png">
 </p>
 <!--
 ![tsne_embedding](tsne_p100_20080514.png)
@@ -46,7 +46,7 @@ In two dimensions, the data points do not show a nice clustering behaviour. The 
 The microstates found are labelled ms-A,..., ms-D, following a commonly used convention ([Michel2018](#ref1)). Projecting the cluster centers onto the head surface, the microstate maps look like:
 
 <p align="center">
-<img width="600" height="150" src="img/group_ms30_1200.png">
+<img width="1000" height="250" src="img/group_ms30_1200.png">
 </p>
 
 <!--
