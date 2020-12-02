@@ -114,7 +114,7 @@ Autocorrelation analysis cannot be applied to sequences of symbols or labels (su
 
 This demonstrates that the microstates themselves occur with a frequency around 10 Hz, and suggests that the networks associated with these microstate patterns activate periodically over time. If the whole process was determined by the information contained in the transition probability matrix T only, the AIF would decay as the 95\% confidence interval, which was computed from surrogate sequences only defined by T (gray, Markov CI).
 
-## Give it a try!
+### Give it a try!
 
 <p>
 Link to the markdown page: [online microstate analysis](page1.md){:target="_blank" rel="noopener"}
