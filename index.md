@@ -35,7 +35,7 @@ These representative EEG topographies (microstates) are computed via a clusterin
 Each of the four microstates is represented with a different colour (microstate class A: black, B: blue, C: red, D: yellow):
 
 <p align="center">
-<img width="300" height="300" src="img/tsne_p100_20080514.png">
+<img width="400" height="400" src="img/tsne_p100_20080514.png">
 </p>
 <!--
 ![tsne_embedding](tsne_p100_20080514.png)
