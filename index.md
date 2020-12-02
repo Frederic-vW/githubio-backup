@@ -47,6 +47,7 @@ Try and hit pause when the yellow dot is at a GFP peak location, and compare the
 
 <video src="mov/20080514_t24000-24300_ms_t.webm" width="760" height="380" controls preload></video>
 
+The microstate approximation is far from perfect, but generally captures 60-80\% of the data variance. Despite the heavy compression ratio of 960, some important EEG properties are conserved.
 
 ### Microstate sequence analysis
 Once the multi-channel EEG data set is compressed into the simple microstate label sequence, the main question is: which EEG properties are reflected by a microstate sequence?
