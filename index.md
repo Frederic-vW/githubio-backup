@@ -63,9 +63,18 @@ The distribution of the microstates A-D in the sample above is $$[0.16, 0.53, 0.
 
 #### Entropy rate
 
+$$ h_X = H(X_{n+1} \mid \mathbf{X}_n^{(k)}) $$
+
 <p align="center">
 <img width="400" height="400" src="img/20080514_entropyrate.png">
 </p>
+
+<!--
+#### Active information storage
+$$ a_X(n,k) = I(X_{n+1} ; \mathbf{X}_n^{(k)}) $$
+#### Active information storage
+$$ \pi_X(n,k) = I(X_{n+k} ; X_n \mid X_{n+k-1} \ldots X_{n+1}) $$
+-->
 
 #### The Markov property
 When the occurrence of microstates does not depend on the past, or in other words, when the transition probabilities $$P(X_{t+1} \vert X_t)$$ do not depend on $$P(X_t)$$, the sequence has the zero-order Markov property.  
@@ -106,10 +115,15 @@ Autocorrelation analysis cannot be applied to sequences of symbols or labels (su
 This demonstrates that the microstates themselves occur with a frequency around 10 Hz, and suggests that the networks associated with these microstate patterns activate periodically over time. If the whole process was determined by the information contained in the transition probability matrix T only, the AIF would decay as the 95\% confidence interval, which was computed from surrogate sequences only defined by T (gray, Markov CI).
 
 ## Give it a try!
-<!--
-Try the [online microstate analysis](page1.md){:target="_blank" rel="noopener"}
--->
-Try the [online microstate analysis](stats.html){:target="_blank" rel="noopener"}
+
+<p>
+Link to the markdown page: [online microstate analysis](page1.md){:target="_blank" rel="noopener"}
+</p>
+
+<p>
+Link to the html page: [online microstate analysis](stats.html){:target="_blank" rel="noopener"}
+</p>
+
 
 ## Continuous EEG patterns
 Microstate frequency analysis shows that microstate labels recur periodically, at the rate of the EEG alpha frequency. This effect can be understood by looking at pure alpha frequency-band oscillations.
