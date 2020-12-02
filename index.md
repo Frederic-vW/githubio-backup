@@ -54,9 +54,10 @@ The microstates found are labelled ms-A,..., ms-D, following a commonly used con
 -->
 The color bars below each map correspond to the colours used in the tSNE visualization above.
 
-If we accept these clustering results, the EEG data set can now be represented by a sequence of microstates. Instead of using the voltage values at each of the 30 electrodes and each moment, we use the microstate label (A-D) that best matches the voltage distribution at that time. The similarity between the current EEG vector and each microstate is measured by their *squared* correlation coefficient, thus ignoring polarity.
-The 1.2 second EEG segment animated above, for example, is defined by an array of 9000 floating point values (300 samples x 30 channels). The microstate algorithm reduced that to a sequence of 300 microstate labels, something like: AAADABCCBD...
+If we accept these clustering results, the EEG data set can now be represented by a sequence of microstates. Instead of using the voltage values at each of the 30 electrodes and each moment, we use the microstate label (A-D) that best matches the voltage distribution at that time. The similarity between the current EEG vector and each microstate is measured by their *squared* correlation coefficient, thus ignoring polarity.  
+The 1.2 second EEG segment animated above, for example, is defined by an array of 9000 floating point values (300 samples x 30 channels). The microstate algorithm reduced that to a sequence of 300 microstate labels, something like: AAADABCCBD...  
 In terms of data compression, 30 floating point values of 64 bit each are reduced to 1 label with 2 bit information (4 labels), or by a factor of 960. Obviously, this factor increases when more electrodes are used.
+
 The whole idea is best shown in an animation (below): the top row shows the GFP time course, with the moving yellow dot indicating the current time point. Below, the same 1.2 sec. EEG segment (1-30 Hz) used above is shown on the left, now spatially interpolated onto a regular 128 x 128 grid, as an approximation to the real voltage distribution across the head surface. The best fitting microstate is shown on the right. Since the algorithm ignores polarity, a microstate matches when its symmetry is similar to the current EEG topography, even when red/blue are inverted. Usually, the fit is best at local GFP peaks.
 
 <!-- A non-interpolated microstate sequence: -->
