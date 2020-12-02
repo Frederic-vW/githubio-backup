@@ -80,7 +80,9 @@ An interpolated microstate sequence:
 Once the multi-channel EEG data set is compressed into the simple microstate label sequence, the main question is: which EEG properties are reflected by a microstate sequence?
 
 #### Shannon entropy
-Microstate sequences are often characterized by the 'ratio of time covered', or RTT, of each microstate. When divided by the total time of the recording, this is the same thing as the probability of finding a certain microstate anywhere in that recording.
+Microstate sequences are often characterized by the 'ratio of time covered', or RTT, of each microstate. When divided by the total time of the recording, this is the same thing as the probability of finding a certain microstate anywhere in that recording.  
+The Shannon entropy of this distribution is defined as $$ H(X) = -\sum_i P(X_i) \log_2 P(X_i) $$, where $$P(X_i)$$ are the probabilities of the microstate labels.
+The microstate distribution of the microstate sample above is $$p(A)=0.16, p(B)=0.53, p(C)=0.11, p(D)=0.2$$, and is shown below (center). The Shannon entropy for this distribution is $$H=1.72 bit$$. What is a large, and what is a small entropy value? The minimum entropy is $$H_{min}=0$$, and occurs when exactly one of the labels has probability one, for example $$p(B)=1$$ (could be any other), and all others have probability zero. This case is shown on the left. The maximum entropy occurs when all microstates have the same probability. In the case of 4 microstates, this means $$p(A)=...=p(D)=\frac{1}{4}$$, and $$H_{max}=\log_2(4) = 2$$.
 
 <p align="center">
 <img width="600" height="200" src="img/shannon_entropies.png">
@@ -93,6 +95,8 @@ Microstate sequences are often characterized by the 'ratio of time covered', or 
 </p>
 
 #### The Markov property
+When the occurrence of microstates does not depend on the past, or in other words, when the transition probabilities $$P(X_{t+1} \vert X_t)$$ do not depend on $$P(X_t)$$, the sequence has the zero-order Markov property.  
+When the occurrence of a microstate only depends on the preceding microstate, but not on the previous history, the sequence has the first-order Markov property. This means $$P(X_{t+1} \vert X_t, X_{t-1},\ldots) = P(X_{t+1} \vert X_t)$$.
 
 #### Microstate frequency analysis
 For numerical time series, characteristic frequencies appear as peaks in the power spectral density (PSD). Resting state EEG alpha oscillations, for example, produce a PSD peak around 10 Hz, as seen below on the left. The Wiener–Khinchin theorem says that the same information can be expressd by the signal's autocorrelation function (ACF), where 10 Hz oscillations produce periodic peaks at multiples of 100 ms (10.3 Hz and 97 ms for the individual shown). For time lags at which the alpha oscillation is shifted by a half-cycle (50 ms, 150 ms,...), the autocorrelation is negative.
@@ -127,6 +131,8 @@ Autocorrelation analysis cannot be applied to sequences of symbols or labels (su
 
 This demonstrates that the microstates themselves occur with a frequency around 10 Hz, and suggests that the networks associated with these microstate patterns activate periodically over time. If the whole process was determined by the information contained in the transition probability matrix T only, the AIF would decay as the 95\% confidence interval, which was computed from surrogate sequences only defined by T (gray, Markov CI).
 
+## Give it a try!
+Try the [online microstate analysis](page1.md)  
 
 ## Continuous EEG patterns
 Microstate frequency analysis shows that microstate labels recur periodically, at the rate of the EEG alpha frequency. This effect can be understood by looking at pure alpha frequency-band oscillations.
