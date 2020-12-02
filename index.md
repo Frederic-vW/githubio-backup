@@ -92,7 +92,7 @@ Microstate sequences are often characterized by the 'ratio of time covered', or 
 For numerical time series, characteristic frequencies appear as peaks in the power spectral density (PSD). Resting state EEG alpha oscillations, for example, produce a PSD peak around 10 Hz, as seen below on the left. The Wiener–Khinchin theorem says that the same information can be expressd by the signal's autocorrelation function (ACF), where 10 Hz oscillations produce periodic peaks at multiples of 100 ms (10.3 Hz and 97 ms for the individual shown). For time lags at which the alpha oscillation is shifted by a half-cycle (50 ms, 150 ms,...), the autocorrelation is negative.
 
 <p align="center">
-<img width="1000" height="300" src="img/20080514TT_PSD_ACF.png">
+<img width="1000" height="300" src="img/20080514_PSD_ACF.png">
 </p>
 
 Using mutual information as an alternative to linear correlation, the statistical dependence between microstate labels at times $$t$$ and $$t+\tau$$ (time lag $$\tau$$) can be expressed by the time-lagged mutual information coefficients:
@@ -105,7 +105,7 @@ $$
 In analogy to the autocorrelation function (ACF), we call this the autoinformation function (AIF). For EEG alpha oscillations (10 Hz), we find periodic AIF peaks at multiples of 50 ms and 100 ms (blue curve). In contrast to correlation, information terms are always positive, so negative ACF peaks appear as positive AIF peaks.
 
 <p align="center">
-<img width="1000" height="300" src="img/20080514TT_PSD_ACF_AIF.png">
+<img width="1000" height="300" src="img/20080514_PSD_ACF_AIF.png">
 </p>
 
 The first 100 entries of the microstate sequence animated above are: BBBADBBBBAAAAAAAADDDDDDCCABBBBBBBBBBAADDBBDDDDDBBBBBBBBBBDDABBBBBBBBACCCBBBBBBBDDDDBACCCCBBBBBACCBBB
@@ -137,6 +137,18 @@ The continuous dynamics are animated below. Alpha band activity is on the left (
 </p>
 
 Microstates try to capture the ongoing dynamics on the left. When separated into amplitude and phase dynamics, we see that the alpha amplitude changes very slowly and its maximum stays over occipital areas. The analytic phase, however, shows rotating phase patterns, or phase rotors. At the center of each rotor, where all phase values coincide, the phase is not defined, these sites are called phase singularities.
+
+The phase gradient (blue streamlines) is defined by 
+
+$$ \nabla \phi_{m,n} & =  \left(\phi_{m+1,n}-\phi_{m,n}, \phi_{m,n+1}-\phi_{m,n}\right) $$
+
+and provides an invariant during these rotations
+Singularities can be detected efficiently from the topological charge $$\sigma(\mathbf{r},t)$$ of the phase field:
+$$
+\begin{align*}
+  \sigma(\mathbf{r},t) = \frac{1}{2\pi}\oint_{C} \nabla \phi(\mathbf{r},t) \mathrm{dl}
+\end{align*}
+$$
 
 <p align="center">
 <video src="mov/20080514_t24000-24300_phase.webm" width="600" height="300" controls preload></video>
@@ -202,9 +214,6 @@ $$
 and ...  
 -->
 
-<!---
-![Conformal map](pic2.png)
--->
 
 <!--
 You can use the [editor on GitHub](https://github.com/Frederic-vW/Frederic-vW.github.io/edit/master/index.md) to maintain and preview the content for your website in Markdown files.
