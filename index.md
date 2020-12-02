@@ -27,7 +27,7 @@ See more at the [example site](page1.md)
 Adopting a discrete perspective, the sequence 
 -->
 
-## EEG microstate analysis
+## EEG microstates
 The aim of EEG microstate analysis is to describe the variety of EEG patterns shown above by a small set of representative patterns ([Michel2018](#ref1)).
 
 ### Clustering
@@ -162,7 +162,7 @@ $$
 \end{align*}
 $$
 
-computed from the integral along any closed contour $$C$$. Counterclockwise rotations of the phase gradient have a positive topological charge ($$\sigma=+1$$), clockwise rotations a negative charge ($$\sigma=-1$$).
+computed from the integral along any closed contour $$C$$. Counterclockwise rotations of the phase gradient have a positive topological charge ($$\sigma=+1$$, white squares), clockwise rotations a negative charge ($$\sigma=-1$$, black squares).
 
 <p align="center">
 <video src="mov/20080514_t24000-24300_phase.webm" width="600" height="300" controls preload></video>
