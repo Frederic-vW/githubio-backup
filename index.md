@@ -86,6 +86,10 @@ Microstate sequences are often characterized by the 'ratio of time covered', or 
 
 #### Entropy rate
 
+<p align="center">
+<img width="400" height="400" src="img/20080514_entropyrate.png">
+</p>
+
 #### The Markov property
 
 #### Microstate frequency analysis
@@ -130,7 +134,7 @@ At each EEG electrode, amplitude-modulated oscillations are observed. These can 
 All the details can be found in [Wegner2020](#ref2).
 
 #### Phase rotors
-The continuous dynamics are animated below. Alpha band activity is on the left ($$\alpha(\mathbf{r},t)$$), the alpha amplitude in the center ($$A(\mathbf{r},t)$$), and the alpha phase on the right ($$\phi(\mathbf{r},t)$$).
+The continuous dynamics are animated below. Alpha band activity $$\alpha(\mathbf{r},t)$$ is on the left, the alpha amplitude $$A(\mathbf{r},t)$$ in the center, and the alpha phase $$\phi(\mathbf{r},t)$$ on the right.
 
 <p align="center">
 <video src="mov/20080514_t24000-24300_cont.webm" width="750" height="250" controls preload></video>
@@ -138,17 +142,25 @@ The continuous dynamics are animated below. Alpha band activity is on the left (
 
 Microstates try to capture the ongoing dynamics on the left. When separated into amplitude and phase dynamics, we see that the alpha amplitude changes very slowly and its maximum stays over occipital areas. The analytic phase, however, shows rotating phase patterns, or phase rotors. At the center of each rotor, where all phase values coincide, the phase is not defined, these sites are called phase singularities.
 
-The phase gradient (blue streamlines) is defined by 
+Using a simple phase gradient definition at grid location $$(m,n)$$: 
 
-$$ \nabla \phi_{m,n} & =  \left(\phi_{m+1,n}-\phi_{m,n}, \phi_{m,n+1}-\phi_{m,n}\right) $$
+$$
+\begin{align*}
+  \nabla \phi_{m,n} & =  \left(\phi_{m+1,n}-\phi_{m,n}, \phi_{m,n+1}-\phi_{m,n}\right)
+\end{align*}
+$$
 
-and provides an invariant during these rotations
-Singularities can be detected efficiently from the topological charge $$\sigma(\mathbf{r},t)$$ of the phase field:
+we obtain an invariant description of these rotations (blue streamlines in the animation below). 
+
+Phase singularities can be detected efficiently from the topological charge $$\sigma(\mathbf{r},t)$$ of the phase field:
+
 $$
 \begin{align*}
   \sigma(\mathbf{r},t) = \frac{1}{2\pi}\oint_{C} \nabla \phi(\mathbf{r},t) \mathrm{dl}
 \end{align*}
 $$
+
+computed from the integral along any closed contour $$C$$. Counterclockwise rotations of the phase gradient have a positive topological charge ($$\sigma=+1$$), clockwise rotations a negative charge ($$\sigma=-1$$).
 
 <p align="center">
 <video src="mov/20080514_t24000-24300_phase.webm" width="600" height="300" controls preload></video>
