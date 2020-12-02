@@ -1,7 +1,7 @@
 theme: jekyll-theme-cayman
 title: GDS projects
 description: experiments and models
-logo: patterns2.png
+logo: img/patterns2.png
 markdown: kramdown
 kramdown:
   toc_levels: 2..3
