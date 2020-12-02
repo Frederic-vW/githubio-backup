@@ -27,10 +27,10 @@ See more at the [example site](page1.md)
 Adopting a discrete perspective, the sequence 
 -->
 
-### EEG microstate analysis
+## EEG microstate analysis
 The aim of EEG microstate analysis is to describe the variety of EEG patterns shown above by a small set of representative patterns ([Michel2018](#ref1)).
 
-#### Clustering
+### Clustering
 These representative EEG topographies (microstates) are computed via a clustering algorithm, whose input are EEG data vectors taken at peaks of the GFP time course. A popular choice in this context is a modified K-means algorithm ([Pascual-Marqui1995](#ref2)). With 30 EEG channels, as shown above, clustering occurs in a 30-dimensional space which is impossible to visualize. A two-dimensional visualization of the clustering is shown below, obtained from the [t-SNE algorithm](https://scikit-learn.org/stable/modules/generated/sklearn.manifold.TSNE.html){:target="_blank" rel="noopener"}.
 Each of the four microstates is represented with a different colour (microstate class A: black, B: blue, C: red, D: yellow):
 
@@ -72,21 +72,21 @@ An interpolated microstate sequence:
 <video src="20080514_t24000-24300_ms_t.mp4" width="760" height="380" controls preload></video>
 
 
-#### Microstate sequence analysis
+### Microstate sequence analysis
 Once the multi-channel EEG data set is compressed into the simple microstate label sequence, the main question is: which EEG properties are reflected by a microstate sequence?
 
-##### Shannon entropy
+#### Shannon entropy
 Microstate sequences are often characterized by the 'ratio of time covered', or RTT, of each microstate. When divided by the total time of the recording, this is the same thing as the probability of finding a certain microstate anywhere in that recording.
 
-##### Entropy rate
+#### Entropy rate
 
-##### The Markov property
+#### The Markov property
 
-##### Microstate frequency analysis
-For numerical time series, characteristic frequencies appear as peaks in the power spectral density (PSD). Resting state EEG alpha oscillations, for example, produce a PSD peak around 10 Hz, as seen below on the left. The Wiener–Khinchin theorem says that the same information can be expressd by the signal's autocorrelation function (ACF), where 10 Hz oscillations produce periodic peaks at multiples of 100 ms. For time lags at which the alpha oscillation is shifted by a half-cycle (50 ms, 150 ms,...), the autocorrelation is negative.
+#### Microstate frequency analysis
+For numerical time series, characteristic frequencies appear as peaks in the power spectral density (PSD). Resting state EEG alpha oscillations, for example, produce a PSD peak around 10 Hz, as seen below on the left. The Wiener–Khinchin theorem says that the same information can be expressd by the signal's autocorrelation function (ACF), where 10 Hz oscillations produce periodic peaks at multiples of 100 ms (10.3 Hz and 97 ms for the individual shown). For time lags at which the alpha oscillation is shifted by a half-cycle (50 ms, 150 ms,...), the autocorrelation is negative.
 
 <p align="center">
-<img width="1200" height="300" src="img/20080514TT_PSD_ACF.png">
+<img width="1000" height="300" src="img/20080514TT_PSD_ACF.png">
 </p>
 
 Using mutual information as an alternative to linear correlation, the statistical dependence between microstate labels at times $$t$$ and $$t+\tau$$ (time lag $$\tau$$) can be expressed by the time-lagged mutual information coefficients:
@@ -96,15 +96,14 @@ $$
 \end{align*}
 $$
 
-In analogy to the autocorrelation function (ACF), we call this the autoinformation function (AIF). For EEG alpha oscillations (10 Hz), we find 10 periodic AIF peaks at multiples of 50 ms and 100 ms (blue curve). In contrast to correlation, information terms are always positive, so negative ACF peaks also appear as positive AIF peaks.
+In analogy to the autocorrelation function (ACF), we call this the autoinformation function (AIF). For EEG alpha oscillations (10 Hz), we find periodic AIF peaks at multiples of 50 ms and 100 ms (blue curve). In contrast to correlation, information terms are always positive, so negative ACF peaks appear as positive AIF peaks.
 
 <p align="center">
-<img width="1200" height="300" src="img/20080514TT_PSD_ACF_AIF.png">
+<img width="1000" height="300" src="img/20080514TT_PSD_ACF_AIF.png">
 </p>
 
 The first 100 entries of the microstate sequence animated above are: BBBADBBBBAAAAAAAADDDDDDCCABBBBBBBBBBAADDBBDDDDDBBBBBBBBBBDDABBBBBBBBACCCBBBBBBBDDDDBACCCCBBBBBACCBBB
-
-The AIF of the complete microstate sequence (30,000 samples) shows the same peaks at the single electrode voltage timecourse shown above.
+Autocorrelation analysis cannot be applied to sequences of symbols or labels (sums, products, etc. are not defined), but mutual information analysis is possible. The AIF of the complete (30,000 sample) microstate sequence shows the same peaks as the single electrode voltage timecourse shown above. The time lag corresponding to this individual's alpha frequency is 97 ms.
 
 <p align="center">
 <img width="1200" height="300" src="img/AIF_example_20080514.png">
@@ -113,21 +112,24 @@ The AIF of the complete microstate sequence (30,000 samples) shows the same peak
 ![aif_example](AIF_example_20080514.png)
 -->
 
-This demonstrates that the microstates themselves occur with a frequency around 10 Hz, and suggests that the networks associated with these microstate patterns activate periodically over time. If the whole process was determined by the information contained in the transition probability matrix T only, the AIF would decay as the confidence interval derived from surrogate sequences defined by T (gray, Markov CI $$\alpha=0.05$$).
+This demonstrates that the microstates themselves occur with a frequency around 10 Hz, and suggests that the networks associated with these microstate patterns activate periodically over time. If the whole process was determined by the information contained in the transition probability matrix T only, the AIF would decay as the 95\% confidence interval, which was computed from surrogate sequences only defined by T (gray, Markov CI).
 
 
 ## Continuous EEG patterns
-Microstate frequency analysis shows that microstate labels recur periodically, with frequencies related to the EEG alpha frequency. To better understand these oscillatory dynamics, let's have a look at pure alpha frequency-band oscillations.
+Microstate frequency analysis shows that microstate labels recur periodically, at the rate of the EEG alpha frequency. This effect can be understood by looking at pure alpha frequency-band oscillations.
 
 ### Amplitude and phase patterns
-At each EEG electrode, amplitude-modulates oscillations are observed. These can be characterized completely by their analytic amplitude and analytic phase.
-More information in [Wegner2020](#ref2).
+At each EEG electrode, amplitude-modulated oscillations are observed. These can be characterized completely by their analytic amplitude and analytic phase.
+All the details can be found in [Wegner2020](#ref2).
 
 #### Phase rotors
+The continuous dynamics are animated below. Alpha band activity is on the left ($$\alpha(\mathbf{r},t)$$), the alpha amplitude in the center ($$A(\mathbf{r},t)$$), and the alpha phase on the right ($$\phi(\mathbf{r},t)$$).
 
 <p align="center">
 <video src="20080514_t24000-24300_cont.mp4" width="750" height="250" controls preload></video>
 </p>
+
+Microstates try to capture the ongoing dynamics on the left. When separated into amplitude and phase dynamics, we see that the alpha amplitude changes very slowly and its maximum stays over occipital areas. The analytic phase, however, shows rotating phase patterns, or phase rotors. At the center of each rotor, where all phase values coincide, the phase is not defined, these sites are called phase singularities.
 
 
 ## References
