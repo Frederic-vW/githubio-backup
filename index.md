@@ -43,7 +43,7 @@ Each of the four microstates is represented with a different colour (microstate 
 
 In two dimensions, the data points do not show a nice clustering behaviour. The clustering labels neighbouring data points with the same colour (microstate class), but their separation into four clusters seems a bit arbitrary. This is partially due to the reduction to 2 dimensions, but also due to the continuous nature of EEG topographic patterns, as will be shown below.
 
-The microstates found are labelled ms-A,..., ms-D, following a commonly used convention ([Michel2018](#ref1)):
+The microstates found are labelled ms-A,..., ms-D, following a commonly used convention ([Michel2018](#ref1)). Projecting the cluster centers onto the head surface, the microstate maps look like:
 
 <p align="center">
 <img width="600" height="150" src="img/group_ms30_600.png">
@@ -52,6 +52,8 @@ The microstates found are labelled ms-A,..., ms-D, following a commonly used con
 <!--
 <video src="S029R02_avgref_t1000-2000_microstates.mp4" width="760" height="380" controls preload></video>
 -->
+The color bars below each map correspond to the colours used in the tSNE visualization above.
+
 If we accept these clustering results, the EEG data set can now be represented by a sequence of microstates. Instead of using the voltage values at each of the 30 electrodes and each moment, we use the microstate label (A-D) that best matches the voltage distribution at that time. The similarity between the current EEG vector and each microstate is measured by their *squared* correlation coefficient, thus ignoring polarity.
 The 1.2 second EEG segment animated above, for example, is defined by an array of 9000 floating point values (300 samples x 30 channels). The microstate algorithm reduced that to a sequence of 300 microstate labels, something like: AAADABCCBD...
 In terms of data compression, 30 floating point values of 64 bit each are reduced to 1 label with 2 bit information (4 labels), or by a factor of 960. Obviously, this factor increases when more electrodes are used.
@@ -77,6 +79,10 @@ Once the multi-channel EEG data set is compressed into the simple microstate lab
 
 #### Shannon entropy
 Microstate sequences are often characterized by the 'ratio of time covered', or RTT, of each microstate. When divided by the total time of the recording, this is the same thing as the probability of finding a certain microstate anywhere in that recording.
+
+<p align="center">
+<img width="600" height="200" src="img/shannon_entropies.png">
+</p>
 
 #### Entropy rate
 
