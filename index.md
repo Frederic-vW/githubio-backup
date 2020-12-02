@@ -46,7 +46,7 @@ In two dimensions, the data points do not show a nice clustering behaviour. The 
 The microstates found are labelled ms-A,..., ms-D, following a commonly used convention ([Michel2018](#ref1)). Projecting the cluster centers onto the head surface, the microstate maps look like:
 
 <p align="center">
-<img width="1000" height="250" src="img/group_ms30_1200.png">
+<img width="800" height="200" src="img/group_ms30_1200.png">
 </p>
 
 <!--
