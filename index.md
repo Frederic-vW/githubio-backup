@@ -13,7 +13,7 @@ While temporal patterns like oscillations are clearly seen, the spatial ordering
 <video src="S002R02_avgref_t1000-2000_graph.mp4" width="380" height="380" controls preload></video>
 -->
 <p align="center">
-<video src="20080514_t24000-24300_graph_1_30.mp4" width="380" height="380" controls preload></video>
+<video src="mov/20080514_t24000-24300_graph_1_30.webm" width="380" height="380" controls preload></video>
 </p>
 
 The animation was slowed down 25 times with regard to real time. In other words, 1.2 seconds real time are expanded to a 30 second animation. Voltage is represented by colour, the blue-red spectrum covers the range [-33 µV, +23 µV]. 
@@ -69,7 +69,7 @@ The whole idea is best shown in an animation (below): the top row shows the GFP 
 An interpolated microstate sequence:
 <video src="S002R02_avgref_t1000-2000_microstates_ip.mp4" width="760" height="380" controls preload></video>
 -->
-<video src="20080514_t24000-24300_ms_t.mp4" width="760" height="380" controls preload></video>
+<video src="mov/20080514_t24000-24300_ms_t.webm" width="760" height="380" controls preload></video>
 
 
 ### Microstate sequence analysis
@@ -127,13 +127,13 @@ All the details can be found in [Wegner2020](#ref2).
 The continuous dynamics are animated below. Alpha band activity is on the left ($$\alpha(\mathbf{r},t)$$), the alpha amplitude in the center ($$A(\mathbf{r},t)$$), and the alpha phase on the right ($$\phi(\mathbf{r},t)$$).
 
 <p align="center">
-<video src="20080514_t24000-24300_cont.mp4" width="750" height="250" controls preload></video>
+<video src="mov/20080514_t24000-24300_cont.webm" width="750" height="250" controls preload></video>
 </p>
 
 Microstates try to capture the ongoing dynamics on the left. When separated into amplitude and phase dynamics, we see that the alpha amplitude changes very slowly and its maximum stays over occipital areas. The analytic phase, however, shows rotating phase patterns, or phase rotors. At the center of each rotor, where all phase values coincide, the phase is not defined, these sites are called phase singularities.
 
 <p align="center">
-<video src="20080514_t24000-24300_phase.webm" width="600" height="300" controls preload></video>
+<video src="mov/20080514_t24000-24300_phase.webm" width="600" height="300" controls preload></video>
 </p>
 
 
