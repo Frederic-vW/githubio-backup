@@ -1,4 +1,4 @@
-# Pattern formation in brain eletrical activity
+# EEG pattern formation
 <!--
 # Frederic-vW.github.io
 -->
