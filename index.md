@@ -108,11 +108,11 @@ For numerical time series, characteristic frequencies appear as peaks in the pow
 <img width="1000" height="300" src="img/20080514_PSD_ACF.png">
 </p>
 
-Using mutual information as an alternative to linear correlation, the statistical dependence between microstate labels at times $$t$$ and $$t+\tau$$ (time lag $$\tau$$) can be expressed by the time-lagged mutual information coefficients:
+Using mutual information as an alternative to linear correlation, the statistical dependence between the microstate samples at times $$n$$ and $$n+k$$ (time lag $$\k$$ samples) can be expressed by the time-lagged mutual information coefficients:
 
 $$
 \begin{align*}
-  I(\tau) & = H(X_{t+\tau}) - H(X_{t+\tau} \vert X_{t})
+  I_k & = H(X_{n+k}) - H(X_{n+k} \vert X_{n})
 \end{align*}
 $$
 
