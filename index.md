@@ -21,33 +21,33 @@ These representative EEG topographies (microstates) are computed via a clusterin
 Each of the four microstates is represented with a different colour (microstate class A: black, B: blue, C: red, D: yellow):
 
 <p align="center">
-<img width="400" height="400" src="img/tsne_p100_20080514.png">
+<img width="350" height="350" src="img/tsne_p100_20080514.png">
 </p>
 <!--
 ![tsne_embedding](tsne_p100_20080514.png)
 -->
 
-In two dimensions, the data points do not show a nice clustering behaviour. The clustering labels neighbouring data points with the same colour (microstate class), but their separation into four clusters seems a bit arbitrary. This is partially due to the reduction to 2 dimensions, but also due to the continuous nature of EEG topographic patterns, as will be shown below.
+In two dimensions, the data points do not show a nice clustering behaviour. Data points assigned to the same microstate cluster (same colour) form coherent groups in the plot, but their separation into four clusters seems is not obvious. This is partially due to the reduction to 2 dimensions, but also due to the continuous nature of EEG topographic patterns, as will be shown below.
 
-The microstates found are labelled ms-A,..., ms-D, following a commonly used convention ([Michel2018](#ref1)). Projecting the cluster centers onto the head surface, the microstate maps look like:
+The microstates found are labelled ms-A,..., ms-D, following a commonly used convention ([Michel2018](#ref1)). Plotting the cluster centers as if they were real EEG topographies on the head surface, the microstate maps look like this:
 
 <p align="center">
 <img width="800" height="200" src="img/group_ms30_1200.png">
 </p>
 
+The colour bars below each map correspond to the colours used in the tSNE visualization above.
 
-The color bars below each map correspond to the colours used in the tSNE visualization above.
+If we accept the clustering, the EEG data set can now be represented by a sequence of microstates. Instead of using the voltage values at each of the 30 electrodes and each moment, we use the microstate label (A-D) that best matches the voltage distribution at that time. The similarity between the current EEG vector and each microstate is measured by their *squared* correlation coefficient, thus ignoring polarity.  
+The 1.2 second EEG segment animated above, for example, is defined by an array of 9000 floating point values (300 samples x 30 channels). The microstate algorithm reduced that to a sequence of 300 microstate labels. The first 100 entries of the microstate sequence representing the EEG segment animated above are: BBBADBBBBAAAAAAAADDDDDDCCABBBBBBBBBBAADDBBDDDDDBBBBBBBBBBDDABBBBBBBBACCCBBBBBBBDDDDBACCCCBBBBBACCBBB
+  
+In terms of data compression, the microstate approach reduces 30 64-bit floating point values (one for each EEG channel) to 1 label with 2 bit information (4 labels), or by a factor of 960. This factor increases when more electrodes are used.
 
-If we accept these clustering results, the EEG data set can now be represented by a sequence of microstates. Instead of using the voltage values at each of the 30 electrodes and each moment, we use the microstate label (A-D) that best matches the voltage distribution at that time. The similarity between the current EEG vector and each microstate is measured by their *squared* correlation coefficient, thus ignoring polarity.  
-The 1.2 second EEG segment animated above, for example, is defined by an array of 9000 floating point values (300 samples x 30 channels). The microstate algorithm reduced that to a sequence of 300 microstate labels, something like: BBBADBBBBAAAAAAAADD...  
-In terms of data compression, the microstate approach reduces 30 64-bit floating point values (one for each EEG channel) to 1 label with 2 bit information (4 labels), that is a factor of 960. Clearly, this factor increases when more electrodes are used.
-
-The whole idea is best shown in an animation (below): the top row shows the GFP time course, with the moving yellow dot indicating the current time point. Below, the same 1.2 sec. EEG segment (1-30 Hz) used above is shown on the left, now spatially interpolated onto a regular 128 x 128 grid, as an approximation to the real voltage distribution across the head surface. The best fitting microstate is shown on the right. Since the algorithm ignores polarity, a microstate matches when its symmetry is similar to the current EEG topography, even when red/blue are inverted. Usually, the fit is best at local GFP peaks.  
+What the microstate approach achieves is best shown in an animation (below): the top row is the GFP time course, and the moving yellow dot indicates the current time point. Below, the same 1.2 second EEG segment (1-30 Hz) used above is shown on the left, now spatially interpolated onto a 128 x 128 grid, as an approximation to the real voltage distribution across the head surface. The best fitting microstate is shown on the right. Since the algorithm ignores polarity, a microstate matches when its symmetry is similar to the current EEG topography, even when red/blue are inverted. Usually, the fit is best at local GFP peaks.  
 Try and hit pause when the yellow dot is at a GFP peak location, and compare the symmetry of the EEG topography on the left and on the right, and don't forget to ignore polarity!
 
 <video src="mov/20080514_t24000-24300_ms_t.webm" width="760" height="380" controls preload></video>
 
-The microstate approximation is far from perfect, but generally captures 60-80\% of the data variance. Despite the heavy compression ratio of 960, some important EEG properties are conserved.
+The microstate approximation is far from perfect, but generally captures 60-80% of the data variance. Despite the heavy compression ratio of 960, some important EEG properties are conserved.
 
 ### Microstate sequence analysis
 Once the multi-channel EEG data set is compressed into the simple microstate label sequence, the main question is: which EEG properties are reflected by a microstate sequence, and how can they be measured?
@@ -55,7 +55,7 @@ Once the multi-channel EEG data set is compressed into the simple microstate lab
 #### Microstate distribution and Shannon entropy
 Microstate sequences are often characterized by the 'ratio of time covered' (RTT) by each microstate. When divided by the total time of the recording, this is the same thing as the probability of finding a certain microstate in that recording.  
 The Shannon entropy of this distribution is defined as $$ H(X) = -\sum_i p_i \log_2 p_i $$, where $$p_i$$ are the probabilities of the microstate labels $$i \in {A,B,C,D}$$.  
-The distribution of the microstates A-D in the sample above is $$[0.16, 0.53, 0.11, 0.2]$$, and is shown below (center). The Shannon entropy of this distribution is $$H=1.72$$ bit. Is that a small or large entropy value? The minimum entropy is $$H_{min}=0$$ bit, and occurs when exactly one of the labels has probability one, for example $$p_B=1$$ (could as well be $$p_A$$, or any other), and all others have probability zero. This case is shown on the left, and means that the occurrence of microstate B is absolutely certain, so the entropy (uncertainty) is zero. Maximum entropy occurs when all microstates have the same probability (maximum uncertainty of which state will occur). In the case of 4 microstates, this means $$p_A=...=p_D=\frac{1}{4}$$, and $$H_{max}=-4 \times \frac{1}{4} \log_2 \left( \frac{1}{4} \right) = 2$$.
+The distribution of the microstates A-D in the sample above is (0.16, 0.53, 0.11, 0.2), and is shown below (center). The Shannon entropy of this distribution is H=1.72 bit. Is that a small or large entropy value? The minimum entropy is H_{min}=0 bit, and occurs when exactly one of the labels has probability one, for example p_B=1 (could as well be p_A, or any other), and all others have probability zero. This case is shown on the left, and means that the occurrence of microstate B is absolutely certain, so the entropy (uncertainty) is zero. Maximum entropy occurs when all microstates have the same probability (maximum uncertainty of which state will occur). In the case of 4 microstates, this means $$p_A=...=p_D=\frac{1}{4}$$, and $$H_{max}=-4 \times \frac{1}{4} \log_2 \left( \frac{1}{4} \right) = 2$$.
 
 <p align="center">
 <img width="600" height="200" src="img/shannon_entropies.png">
@@ -75,8 +75,8 @@ Large values (close to 1) along the diagonal indicate many self transitions, i.e
 How quickly a process with a transition matrix $$T$$ approaches its equilibrium is described by its relaxation time $$\tau_r$$, which is defined in terms of the two largest eigenvalues of $$T$$. By construction, $$T$$ is a stochastic matrix ($$\sum_j T_{ij}=1$$), and its larges eigenvalue is $$\lambda_0 = 1$$. The larger the difference between $$\lambda_0$$ and the second largest eigenvalue $$\lambda_1$$, the shorter is the relaxation time, which is defined as $$\tau_r = \frac{1}{1-\lambda_1}$$.  
 
 #### The Markov property
-When the occurrence of microstates does not depend on the past, or in other words, when the transition probabilities $$P(X_{t+1} \vert X_t)$$ do not depend on $$P(X_t)$$, the sequence has the zero-order Markov property.  
-When the occurrence of a microstate only depends on the preceding microstate, but not on the previous history, the sequence has the first-order Markov property. This means $$P(X_{t+1} \vert X_t, X_{t-1},\ldots) = P(X_{t+1} \vert X_t)$$.
+When the occurrence of microstates does not depend on the past, or in other words, when the transition probabilities $$P(X_{n+1} \vert X_n)$$ do not depend on $$P(X_n)$$, the sequence has the zero-order Markov property.  
+When the occurrence of a microstate only depends on the preceding microstate, but not on the previous history, the sequence has the first-order Markov property. This means $$P(X_{n+1} \vert X_n, X_{n-1},\ldots) = P(X_{n+1} \vert X_n)$$.
 
 
 #### Entropy rate
@@ -111,7 +111,7 @@ For numerical time series, characteristic frequencies appear as peaks in the pow
 <img width="1000" height="300" src="img/20080514_PSD_ACF.png">
 </p>
 
-Using mutual information as an alternative to linear correlation, the statistical dependence between the microstate samples at times $$n$$ and $$n+k$$ (time lag $$\k$$ samples) can be expressed by the time-lagged mutual information coefficients:
+Using mutual information as an alternative to linear correlation, the statistical dependence between the microstate samples at times $$n$$ and $$n+k$$ can be expressed by the time-lagged mutual information coefficients:
 
 $$
 \begin{align*}
@@ -128,8 +128,6 @@ In analogy to the autocorrelation function (ACF), we call this the autoinformati
 <p align="center">
 <img width="1000" height="300" src="img/20080514_PSD_ACF_AIF.png">
 </p>
-
-The first 100 entries of the microstate sequence animated above are: BBBADBBBBAAAAAAAADDDDDDCCABBBBBBBBBBAADDBBDDDDDBBBBBBBBBBDDABBBBBBBBACCCBBBBBBBDDDDBACCCCBBBBBACCBBB
 
 Autocorrelation analysis cannot be applied to sequences of symbols or labels (sums, products, etc. are not defined), but mutual information analysis is possible. The AIF of the complete (30,000 sample) microstate sequence shows the same peaks as the single electrode voltage timecourse shown above. The time lag corresponding to this individual's alpha frequency is 97 ms.
 
@@ -188,6 +186,16 @@ computed from the integral along any closed contour $$C$$. Counterclockwise rota
 <p align="center">
 <video src="mov/20080514_t24000-24300_phase.webm" width="600" height="300" controls preload></video>
 </p>
+
+
+#### Phase rotors in a computational model
+The same phase patterns can be found in a computational model of EEG oscillations ([Wegner2020](#ref3)). Using diffusively coupled oscillators on a square lattice, phase rotors arise spontaneously when the individual oscillators undergo a supercritical Andronov-Hopf bifurcation. The control parameter $$\mu$$ controls the onset of the bifurcation ($$\mu=0$$):
+
+<p align="center">
+<video src="mov/CSLE_S2.webm" width="300" height="300" controls preload></video>
+</p>
+
+Details are given in ([Wegner2020](#ref3)).
 
 
 ## References
