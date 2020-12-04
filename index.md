@@ -55,8 +55,11 @@ Once the multi-channel EEG data set is compressed into the simple microstate lab
 #### Transition matrix
 
 <p align="center">
-<img width="1200" height="202" src="img/seq_transitionmatrix.png">
+<img src="img/seq_transitionmatrix.png">
 </p>
+<!--
+width="1200" height="202" 
+-->
 
 
 #### Shannon entropy
@@ -71,8 +74,11 @@ The distribution of the microstates A-D in the sample above is $$[0.16, 0.53, 0.
 #### Entropy rate
 
 <p align="center">
-<img width="1200" height="210" src="img/seq_entropyrate.png">
+<img src="img/seq_entropyrate.png">
 </p>
+<!--
+width="1200" height="210" 
+-->
 
 
 $$ h_X = H(X_{n+1} \mid \mathbf{X}_n^{(k)}) $$
@@ -108,8 +114,11 @@ $$
 $$
 
 <p align="center">
-<img width="1200" height="208" src="img/seq_aif.png">
+<img src="img/seq_aif.png">
 </p>
+<!--
+width="1200" height="208" 
+-->
 
 In analogy to the autocorrelation function (ACF), we call this the autoinformation function (AIF). For EEG alpha oscillations (10 Hz), we find periodic AIF peaks at multiples of 50 ms and 100 ms (blue curve). In contrast to correlation, information terms are always positive, so negative ACF peaks appear as positive AIF peaks.
 
