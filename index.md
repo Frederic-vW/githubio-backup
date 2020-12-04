@@ -71,8 +71,8 @@ To describe the temporal structure of a microstate sequence, the most elementary
 </p>
 
 To estimate these conditional probabilities, all transitions are counted, and the matrix rows are normalized to have a row sum of 1.  
-Large values (close to 1) along the diagonal $$t_{ii}$$ indicate many self transitions, i.e. we find long segments of the same label, e.g. ...CCCCCC...
-How quickly a process with a transition matrix $$T$$ approaches its equilibrium is described by its relaxation time $$\tau_r$$, which is defined by the eigenvalues $$\lambda_i$$ of $$T$$. By construction, $$T$$ is a stochastic matrix ($$\sum_j T_{ij}=1$$), and its larges eigenvalue is $$\lambda_0 = 1$$. The larger the difference between $$\lambda_0 = 1$$ and the second largest eigenvalue $$\lambda_1$$, the shorter is the relaxation time, which is defined as $$\tau_r = \frac{1}{1-\lambda_1}$$.  
+Large values (close to 1) along the diagonal indicate many self transitions, i.e. we find long segments of the same label, e.g. ...CCCCCC... if $$t_{CC}$$ is close to 1.  
+How quickly a process with a transition matrix $$T$$ approaches its equilibrium is described by its relaxation time $$\tau_r$$, which is defined in terms of the two largest eigenvalues of $$T$$. By construction, $$T$$ is a stochastic matrix ($$\sum_j T_{ij}=1$$), and its larges eigenvalue is $$\lambda_0 = 1$$. The larger the difference between $$\lambda_0$$ and the second largest eigenvalue $$\lambda_1$$, the shorter is the relaxation time, which is defined as $$\tau_r = \frac{1}{1-\lambda_1}$$.  
 
 #### The Markov property
 When the occurrence of microstates does not depend on the past, or in other words, when the transition probabilities $$P(X_{t+1} \vert X_t)$$ do not depend on $$P(X_t)$$, the sequence has the zero-order Markov property.  
@@ -80,14 +80,17 @@ When the occurrence of a microstate only depends on the preceding microstate, bu
 
 
 #### Entropy rate
-The entropy rate extends the 
+The entropy rate $$h_X$$ of a process measures how much surprise, or uncertainty the time series produces, despite our knowledge of its past. In technical terms uncertainty is measured by entropy, in this case by the conditional entropy of the next microstate, $$X_{n+1}$$, given its past $$k$$ values, or its k-history $$\mathbf{X}_n^{(k)} = (X_n, X_{n-1},\ldots, X_{n-k+1})$$. In theory, the entropy rate should reflect an infinite past ($$k \rightarrow \infty$$), in reality we have to conform with a finite $$k$$:
 
+$$ h_X = H(X_{n+1} \mid \mathbf{X}_n^{(k)}) $$
+
+The idea is illustrated here:
 <p align="center">
 <img width="1000" height="161" src="img/seq_entropyrate.png">
 </p>
 
-
-$$ h_X = H(X_{n+1} \mid \mathbf{X}_n^{(k)}) $$
+Another way to express this concept is to ask how much uncertainty an additional sample adds to an existing collection of microstate samples.
+As the entropy rate is the difference between the joint entropies for history lengths $$k+1$$ and $$k$$, it can be estimated as the slope of a plot of joint entropies $$H(\mathbf{X}_n^{(k)})$$ over a range of history lengths $$k$$. The example microstate sequence give an almost perfect linear fit with a slope of 1.149 bits/sample. At an EEG sampling rate of 250 Hz, this equals 287.25 bits/sec or approximately 2 kilobytes per minute.
 
 <p align="center">
 <img width="400" height="400" src="img/20080514_entropyrate.png">
@@ -196,7 +199,9 @@ computed from the integral along any closed contour $$C$$. Counterclockwise rota
 
 <a name="ref4">[4]</a> von Wegner, F., Laufs, H. (2018). Information-theoretical analysis of EEG microstate sequences in Python. Frontiers in Neuroinformatics, 12:30. [doi: 10.3389/fninf.2018.00030](doi: 10.3389/fninf.2018.00030){:target="_blank" rel="noopener"} 
 
-<a name="ref5">[5]</a> von Wegner, F., Tagliazucchi, E., Laufs, H. (2017). Information-theoretical analysis of resting state EEG microstate sequences - non-Markovianity, non-stationarity and periodicities. NeuroImage, 158:99-111. [http://dx.doi.org/10.1016/j.neuroimage.2017.06.062](http://dx.doi.org/10.1016/j.neuroimage.2017.06.062){:target="_blank" rel="noopener"} 
+<a name="ref5">[5]</a> von Wegner, F., Knaut, P., Laufs, H. (2018). EEG microstate sequences from different clustering algorithms are information-theoretically invariant. Frontiers in Computational Neuroscience, 12:70. [doi: 10.3389/fncom.2018.00070](doi: 10.3389/fncom.2018.00070){:target="_blank" rel="noopener"} 
+
+<a name="ref6">[6]</a> von Wegner, F., Tagliazucchi, E., Laufs, H. (2017). Information-theoretical analysis of resting state EEG microstate sequences - non-Markovianity, non-stationarity and periodicities. NeuroImage, 158:99-111. [http://dx.doi.org/10.1016/j.neuroimage.2017.06.062](http://dx.doi.org/10.1016/j.neuroimage.2017.06.062){:target="_blank" rel="noopener"} 
 
 <!--
 ![](eeg_128_loop.gif)
