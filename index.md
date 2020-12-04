@@ -50,25 +50,37 @@ Try and hit pause when the yellow dot is at a GFP peak location, and compare the
 The microstate approximation is far from perfect, but generally captures 60-80\% of the data variance. Despite the heavy compression ratio of 960, some important EEG properties are conserved.
 
 ### Microstate sequence analysis
-Once the multi-channel EEG data set is compressed into the simple microstate label sequence, the main question is: which EEG properties are reflected by a microstate sequence?
+Once the multi-channel EEG data set is compressed into the simple microstate label sequence, the main question is: which EEG properties are reflected by a microstate sequence, and how can they be measured?
 
-#### Transition matrix
-
-<p align="center">
-<img width="1000" height="143" src="img/seq_transitionmatrix.png">
-</p>
-
-
-#### Shannon entropy
-Microstate sequences are often characterized by the 'ratio of time covered', or RTT, of each microstate. When divided by the total time of the recording, this is the same thing as the probability of finding a certain microstate anywhere in that recording.  
-The Shannon entropy of this distribution is defined as $$ H(X) = -\sum_i P(X_i) \log_2 P(X_i) $$, where $$P(X_i)$$ are the probabilities of the microstate labels.
-The distribution of the microstates A-D in the sample above is $$[0.16, 0.53, 0.11, 0.2]$$, and is shown below (center). The Shannon entropy for this distribution is $$H=1.72$$ bit. Is that a small or large entropy value? The minimum entropy is $$H_{min}=0$$ bit, and occurs when exactly one of the labels has probability one, for example $$P(B)=1$$ (or any other), and all others have probability zero. This case is shown on the left, and means that the occurrence of microstate B is absolutely certain, so the entropy (uncertainty) is zero. Maximum entropy occurs when all microstates have the same probability (maximum uncertainty of which state will occur). In the case of 4 microstates, this means $$P(A)=...=P(D)=\frac{1}{4}$$, and $$H_{max}=-4 \times \frac{1}{4} \log_2 \left( \frac{1}{4} \right) = 2$$.
+#### Microstate distribution and Shannon entropy
+Microstate sequences are often characterized by the 'ratio of time covered' (RTT) by each microstate. When divided by the total time of the recording, this is the same thing as the probability of finding a certain microstate in that recording.  
+The Shannon entropy of this distribution is defined as $$ H(X) = -\sum_i p_i \log_2 p_i $$, where $$p_i$$ are the probabilities of the microstate labels $$i \in {A,B,C,D}$$.  
+The distribution of the microstates A-D in the sample above is $$[0.16, 0.53, 0.11, 0.2]$$, and is shown below (center). The Shannon entropy of this distribution is $$H=1.72$$ bit. Is that a small or large entropy value? The minimum entropy is $$H_{min}=0$$ bit, and occurs when exactly one of the labels has probability one, for example $$p_B=1$$ (could as well be $$p_A$$, or any other), and all others have probability zero. This case is shown on the left, and means that the occurrence of microstate B is absolutely certain, so the entropy (uncertainty) is zero. Maximum entropy occurs when all microstates have the same probability (maximum uncertainty of which state will occur). In the case of 4 microstates, this means $$p_A=...=p_D=\frac{1}{4}$$, and $$H_{max}=-4 \times \frac{1}{4} \log_2 \left( \frac{1}{4} \right) = 2$$.
 
 <p align="center">
 <img width="600" height="200" src="img/shannon_entropies.png">
 </p>
 
+
+#### Transition matrix and relaxation time
+Distribution and Shannon entropy completely ignore the temporal structure of the microstate sequence. A randomly shuffled sequence yields exactly the same values.
+To describe the temporal structure of a microstate sequence, the most elementary concept is the transition probability matrix $$T$$. The matrix element $$t_{ij}$$ is the conditional probability that microstate label $$i$$ occurs at time $$n$$, and precedes label $$j$$ at time $$n+1$$. In the case of 4 microstates, there are 16 different transitions, $$A \rightarrow A$$, $$A \rightarrow B$$, $$A \rightarrow C$$ etc.  
+
+<p align="center">
+<img width="1000" height="143" src="img/seq_transitionmatrix.png">
+</p>
+
+To estimate these conditional probabilities, all transitions are counted, and the matrix rows are normalized to have a row sum of 1.  
+Large values (close to 1) along the diagonal $$t_{ii}$$ indicate many self transitions, i.e. we find long segments of the same label, e.g. ...CCCCCC...
+How quickly a process with a transition matrix $$T$$ approaches its equilibrium is described by its relaxation time $$\tau_r$$, which is defined by the eigenvalues $$\lambda_i$$ of $$T$$. By construction, $$T$$ is a stochastic matrix ($$\sum_j T_{ij}=1$$), and its larges eigenvalue is $$\lambda_0 = 1$$. The larger the difference between $$\lambda_0 = 1$$ and the second largest eigenvalue $$\lambda_1$$, the shorter is the relaxation time, which is defined as $$\tau_r = \frac{1}{1-\lambda_1}$$.  
+
+#### The Markov property
+When the occurrence of microstates does not depend on the past, or in other words, when the transition probabilities $$P(X_{t+1} \vert X_t)$$ do not depend on $$P(X_t)$$, the sequence has the zero-order Markov property.  
+When the occurrence of a microstate only depends on the preceding microstate, but not on the previous history, the sequence has the first-order Markov property. This means $$P(X_{t+1} \vert X_t, X_{t-1},\ldots) = P(X_{t+1} \vert X_t)$$.
+
+
 #### Entropy rate
+The entropy rate extends the 
 
 <p align="center">
 <img width="1000" height="161" src="img/seq_entropyrate.png">
@@ -88,9 +100,6 @@ $$ a_X(n,k) = I(X_{n+1} ; \mathbf{X}_n^{(k)}) $$
 $$ \pi_X(n,k) = I(X_{n+k} ; X_n \mid X_{n+k-1} \ldots X_{n+1}) $$
 -->
 
-#### The Markov property
-When the occurrence of microstates does not depend on the past, or in other words, when the transition probabilities $$P(X_{t+1} \vert X_t)$$ do not depend on $$P(X_t)$$, the sequence has the zero-order Markov property.  
-When the occurrence of a microstate only depends on the preceding microstate, but not on the previous history, the sequence has the first-order Markov property. This means $$P(X_{t+1} \vert X_t, X_{t-1},\ldots) = P(X_{t+1} \vert X_t)$$.
 
 #### Microstate frequency analysis
 For numerical time series, characteristic frequencies appear as peaks in the power spectral density (PSD). Resting state EEG alpha oscillations, for example, produce a PSD peak around 10 Hz, as seen below on the left. The Wiener–Khinchin theorem says that the same information can be expressd by the signal's autocorrelation function (ACF), where 10 Hz oscillations produce periodic peaks at multiples of 100 ms (10.3 Hz and 97 ms for the individual shown). For time lags at which the alpha oscillation is shifted by a half-cycle (50 ms, 150 ms,...), the autocorrelation is negative.
@@ -184,6 +193,10 @@ computed from the integral along any closed contour $$C$$. Counterclockwise rota
 <a name="ref2">[2]</a> Pascual-Marqui, R.D. , Michel, C.M. , Lehmann, D. (1995). Segmentation of brain electrical activity into microstates: model estimation and validation. IEEE Trans. Biomed. Eng. 42(7):658-665. [10.1109/10.391164](10.1109/10.391164){:target="_blank" rel="noopener"}
 
 <a name="ref3">[3]</a> von Wegner, F., Bauer, S., Rosenow, F., Triesch, J., Laufs, H. (2020). EEG microstate periodicity explained by rotating phase patterns of resting-state alpha oscillations. NeuroImage, Sep 24;224:117372. [doi: 10.1016/j.neuroimage.2020.117372](doi: 10.1016/j.neuroimage.2020.117372){:target="_blank" rel="noopener"} 
+
+<a name="ref4">[4]</a> von Wegner, F., Laufs, H. (2018). Information-theoretical analysis of EEG microstate sequences in Python. Frontiers in Neuroinformatics, 12:30. [doi: 10.3389/fninf.2018.00030](doi: 10.3389/fninf.2018.00030){:target="_blank" rel="noopener"} 
+
+<a name="ref5">[5]</a> von Wegner, F., Tagliazucchi, E., Laufs, H. (2017). Information-theoretical analysis of resting state EEG microstate sequences - non-Markovianity, non-stationarity and periodicities. NeuroImage, 158:99-111. [http://dx.doi.org/10.1016/j.neuroimage.2017.06.062](http://dx.doi.org/10.1016/j.neuroimage.2017.06.062){:target="_blank" rel="noopener"} 
 
 <!--
 ![](eeg_128_loop.gif)
