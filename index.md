@@ -52,6 +52,13 @@ The microstate approximation is far from perfect, but generally captures 60-80\%
 ### Microstate sequence analysis
 Once the multi-channel EEG data set is compressed into the simple microstate label sequence, the main question is: which EEG properties are reflected by a microstate sequence?
 
+#### Transition matrix
+
+<p align="center">
+<img width="600" height="200" src="img/seq_transitionmatrix.png">
+</p>
+
+
 #### Shannon entropy
 Microstate sequences are often characterized by the 'ratio of time covered', or RTT, of each microstate. When divided by the total time of the recording, this is the same thing as the probability of finding a certain microstate anywhere in that recording.  
 The Shannon entropy of this distribution is defined as $$ H(X) = -\sum_i P(X_i) \log_2 P(X_i) $$, where $$P(X_i)$$ are the probabilities of the microstate labels.
@@ -62,6 +69,11 @@ The distribution of the microstates A-D in the sample above is $$[0.16, 0.53, 0.
 </p>
 
 #### Entropy rate
+
+<p align="center">
+<img width="600" height="200" src="img/seq_entropyrate.png">
+</p>
+
 
 $$ h_X = H(X_{n+1} \mid \mathbf{X}_n^{(k)}) $$
 
@@ -94,6 +106,10 @@ $$
   I(\tau) & = H(X_{t+\tau}) - H(X_{t+\tau} \vert X_{t})
 \end{align*}
 $$
+
+<p align="center">
+<img width="600" height="200" src="img/seq_aif.png">
+</p>
 
 In analogy to the autocorrelation function (ACF), we call this the autoinformation function (AIF). For EEG alpha oscillations (10 Hz), we find periodic AIF peaks at multiples of 50 ms and 100 ms (blue curve). In contrast to correlation, information terms are always positive, so negative ACF peaks appear as positive AIF peaks.
 
