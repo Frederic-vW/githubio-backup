@@ -67,7 +67,7 @@ Distribution and Shannon entropy completely ignore the temporal structure of the
 To describe the temporal structure of a microstate sequence, the most elementary concept is the transition probability matrix $$T$$. The matrix element $$t_{ij}$$ is the conditional probability that microstate label $$i$$ occurs at time $$n$$, and precedes label $$j$$ at time $$n+1$$. In the case of 4 microstates, there are 16 different transitions, $$A \rightarrow A$$, $$A \rightarrow B$$, $$A \rightarrow C$$ etc.  
 
 <p align="center">
-<img width="1000" height="143" src="img/seq_transitionmatrix.png">
+<img width="1000" height="152" src="img/seq_transitionmatrix.png">
 </p>
 
 To estimate these conditional probabilities, all transitions are counted, and the matrix rows are normalized to have a row sum of 1.  
@@ -86,7 +86,7 @@ $$ h_X = H(X_{n+1} \mid \mathbf{X}_n^{(k)}) $$
 
 The idea is illustrated here:
 <p align="center">
-<img width="1000" height="161" src="img/seq_entropyrate.png">
+<img width="1000" height="158" src="img/seq_entropyrate.png">
 </p>
 
 Another way to express this concept is to ask how much uncertainty an additional sample adds to an existing collection of microstate samples.
@@ -120,7 +120,7 @@ $$
 $$
 
 <p align="center">
-<img width="1000" height="157" src="img/seq_aif.png">
+<img width="1000" height="163" src="img/seq_aif.png">
 </p>
 
 In analogy to the autocorrelation function (ACF), we call this the autoinformation function (AIF). For EEG alpha oscillations (10 Hz), we find periodic AIF peaks at multiples of 50 ms and 100 ms (blue curve). In contrast to correlation, information terms are always positive, so negative ACF peaks appear as positive AIF peaks.
