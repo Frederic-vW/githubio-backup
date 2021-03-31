@@ -1,5 +1,0 @@
-# Overview
-
-## Research projects
-
-## Teaching
