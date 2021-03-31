@@ -1,7 +1,7 @@
 theme: jekyll-theme-cayman
-title: GDS projects
-description: experiments and models
-logo: img/patterns2.png
+title: "..."
+description: ideas & projects
+logo: deepspace2.jpg
 markdown: kramdown
 kramdown:
   toc_levels: 2..3
